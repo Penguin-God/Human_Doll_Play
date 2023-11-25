@@ -6,16 +6,18 @@ using UnityEngine.TestTools;
 
 public class GridMoveUseCaseTests
 {
+    const int tileSize = 16;
     [Test]
-    public void 유닛은_주어진_방향대로_움직여야_함()
+    [TestCase(Direction.Up, 0, 16)]
+    [TestCase(Direction.Down, 0, -16)]
+    [TestCase(Direction.Right, 16, 0)]
+    [TestCase(Direction.Left, -16, 0)]
+    public void 유닛은_주어진_방향대로_움직여야_함(Direction dir, float x, float y)
     {
-        var unit = new GridMover(Vector2.zero);
-        var movements = new List<Vector2> { Vector2.right, Vector2.right, Vector2.up };
-        var sut = new GridMoveUseCase(unit);
+        var sut = new GridMoveUseCase(tileSize);
 
-        sut.MoveUnit(movements);
+        var result = sut.GridMove(Vector2.zero, dir);
 
-        var expectedPosition = new Vector2(2, 1); // 2칸 오른쪽, 1칸 위로 이동
-        Assert.AreEqual(expectedPosition, unit.Position);
+        Assert.AreEqual(new Vector2(x, y), result);
     }
 }

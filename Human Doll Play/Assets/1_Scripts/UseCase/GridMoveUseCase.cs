@@ -3,14 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Direction
+{
+    Up,
+    Down,
+    Left,
+    Right
+}
+
 public class GridMoveUseCase
 {
-    readonly GridMover _gridMover;
-    public GridMoveUseCase(GridMover gridMover) => _gridMover = gridMover;
-
-    public void MoveUnit(IEnumerable<Vector2> movements)
+    readonly int TileSize;
+    public GridMoveUseCase(int tileSize) => TileSize = tileSize;
+    public Vector2 GridMove(Vector2 currentPos, Direction direction) => currentPos + (DirToVector(direction) * TileSize);
+    Vector2 DirToVector(Direction direction)
     {
-        foreach (var movement in movements)
-            _gridMover.Move(movement);
+        switch (direction)
+        {
+            case Direction.Up: return Vector2.up;
+            case Direction.Down: return Vector2.down;
+            case Direction.Left: return Vector2.left;
+            case Direction.Right: return Vector2.right;
+            default: return Vector2.zero;
+        }
     }
 }
