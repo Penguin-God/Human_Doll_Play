@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class GridMoveUseCase
 {
-    public void MoveUnit(GridMover unit, IEnumerable<Vector2> movements)
+    readonly GridMover _gridMover;
+    public GridMoveUseCase(GridMover gridMover) => _gridMover = gridMover;
+
+    public void MoveUnit(IEnumerable<Vector2> movements)
     {
         foreach (var movement in movements)
-            unit.Move(movement);
+            _gridMover.Move(movement);
     }
 }
