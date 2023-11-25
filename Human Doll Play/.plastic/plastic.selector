@@ -1,0 +1,4 @@
+repository "Human Doll Play@parkjun141@cloud"
+  path "/"
+    br "/main"
+    co "/main"
