@@ -7,19 +7,26 @@ public class CharacterMover : MonoBehaviour
 {
     GridMoveUseCase _gridMoveUseCase;
     float _speed; // 초당 움직이는 거리
+    Animator _animator;
 
     public void DependencyInject(GridMoveUseCase gridMoveUseCase, float speed)
     {
         _gridMoveUseCase = gridMoveUseCase;
         _speed = speed;
+        _animator = GetComponent<Animator>();
     }
 
     public void Move(IEnumerable<Direction> directions) => StartCoroutine(MoveCoroutine(directions));
 
     IEnumerator MoveCoroutine(IEnumerable<Direction> directions)
     {
+        _animator.SetBool("IsWalk", true);
         foreach (var direction in directions)
         {
+            Vector2 dir = _gridMoveUseCase.DirToVector(direction);
+            _animator.SetFloat("DirX", dir.x);
+            _animator.SetFloat("DirY", dir.y);
+
             Vector2 destination = _gridMoveUseCase.CalculateDestination(transform.position, direction);
 
             // 현재 위치에서 목표 위치까지 지정된 속도로 부드럽게 이동합니다.
@@ -30,5 +37,6 @@ public class CharacterMover : MonoBehaviour
                 yield return null;
             }
         }
+        _animator.SetBool("IsWalk", false);
     }
 }

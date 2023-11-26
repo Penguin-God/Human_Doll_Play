@@ -9,6 +9,7 @@ public class CharacterMoverTests
     CharacterMover CreateSut(float speed)
     {
         var result = new GameObject().AddComponent<CharacterMover>();
+        result.gameObject.AddComponent<Animator>();
         result.DependencyInject(new GridMoveUseCase(1), speed);
         return result;
     }
@@ -44,7 +45,7 @@ public class CharacterMoverTests
     {
         // Arrange
         var sut = CreateSut(1000);
-        var animator = sut.gameObject.AddComponent<Animator>();
+        var animator = sut.GetComponent<Animator>();
         animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Character/CharacterController");
 
         // Act
