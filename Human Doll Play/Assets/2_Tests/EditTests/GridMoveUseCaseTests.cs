@@ -16,7 +16,7 @@ public class GridMoveUseCaseTests
     {
         var sut = new GridMoveUseCase(tileSize);
 
-        var result = sut.GridMove(Vector2.zero, dir);
+        var result = sut.CalculateDestination(Vector2.zero, dir);
 
         Assert.AreEqual(new Vector2(x, y), result);
     }

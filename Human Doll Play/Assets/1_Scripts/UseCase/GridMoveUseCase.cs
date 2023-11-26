@@ -15,7 +15,7 @@ public class GridMoveUseCase
 {
     readonly int TileSize;
     public GridMoveUseCase(int tileSize) => TileSize = tileSize;
-    public Vector2 GridMove(Vector2 currentPos, Direction direction) => currentPos + (DirToVector(direction) * TileSize);
+    public Vector2 CalculateDestination(Vector2 currentPos, Direction direction) => currentPos + (DirToVector(direction) * TileSize);
     Vector2 DirToVector(Direction direction)
     {
         switch (direction)

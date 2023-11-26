@@ -2,7 +2,8 @@
     "name": "InterfaceAdater",
     "rootNamespace": "",
     "references": [
-        "GUID:33442e93e618e014f96b3efa66d42277"
+        "GUID:33442e93e618e014f96b3efa66d42277",
+        "GUID:e92ca9cf317ed7c4ba6a623098ad1c43"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

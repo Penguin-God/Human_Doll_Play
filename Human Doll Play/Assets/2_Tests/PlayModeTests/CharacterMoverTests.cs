@@ -11,17 +11,17 @@ public class CharacterMoverTests
     {
         // Arrange
         var sut = new GameObject().AddComponent<CharacterMover>();
+        sut.DependencyInject(new GridMoveUseCase(2), 100);
         sut.transform.position = Vector2.zero;
-
-        // 테스트할 방향 시퀀스
         var directions = new List<Direction> { Direction.Right, Direction.Up, Direction.Up };
+
+        // Act
         sut.Move(directions);
+        yield return new WaitForSeconds(0.1f); // 이동 시간 대기
 
         // Assert
-        Assert.AreEqual(new Vector2(16, 32), sut.transform.position);
+        Assert.AreEqual(new Vector3(2, 4, 0), sut.transform.position);
 
-        // 테스트가 완료된 후 게임 오브젝트를 정리합니다.
         Object.Destroy(sut.gameObject);
-        yield return null;
     }
 }
