@@ -25,6 +25,7 @@ public class CharacterMover : MonoBehaviour
             // 현재 위치에서 목표 위치까지 지정된 속도로 부드럽게 이동합니다.
             while (Vector2.Distance(transform.position, destination) > Mathf.Epsilon)
             {
+                // 선형 보간. 거리가 이동할 크기보다 작으면 목적지 반환.
                 transform.position = Vector2.MoveTowards(transform.position, destination, _speed * Time.deltaTime);
                 yield return null;
             }
