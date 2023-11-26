@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class GameSettings
 {
-    public static readonly int TileSize = 16;
+    public static readonly int TileSize = 1;
 }
