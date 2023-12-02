@@ -11,6 +11,6 @@ public class DoTest : MonoBehaviour
         characterMover.DependencyInject(new GridMoveUseCase(GameSettings.TileSize), 5);
         characterMover.Move(new Direction[] { Direction.Up, Direction.Up, Direction.Left, Direction.Left, Direction.Down, Direction.Right});
 
-        dialogue.StartDialogue(new string[] { "dd", "ss", "ff" });
+        StartCoroutine( new Dialoguer(new string[] { "dd", "ss", "ff" }, dialogue, dialogue).Execute());
     }
 }

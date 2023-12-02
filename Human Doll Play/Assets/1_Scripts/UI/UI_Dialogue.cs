@@ -3,29 +3,26 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UI_Dialogue : MonoBehaviour
+public class UI_Dialogue : MonoBehaviour, IDialoguer, IYieldNextLine
 {
     [SerializeField] TextMeshProUGUI _dialogueText;
     [SerializeField] GameObject _textBackground;
-    public void StartDialogue(IEnumerable<string> lines)
+
+    public void StartDialogue()
     {
-        _textBackground.SetActive(true);
         _dialogueText.text = "";
-        StartCoroutine(Co_DisplayDialogue(lines));
+        _textBackground.SetActive(true);
     }
 
-    IEnumerator Co_DisplayDialogue(IEnumerable<string> lines)
+    public void DrawLine(string line) => _dialogueText.text = line;
+
+    public IEnumerator YieldNextLine()
     {
-        foreach (string line in lines)
-        {
-            _dialogueText.text = line;
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0));
-            yield return null;
-        }
-        EndDialogue();
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0));
+        yield return null;
     }
 
-    void EndDialogue()
+    public void EndDialogue()
     {
         _dialogueText.text = "";
         _textBackground.SetActive(false);
