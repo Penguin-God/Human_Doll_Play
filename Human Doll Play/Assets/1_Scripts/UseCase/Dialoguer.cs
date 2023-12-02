@@ -1,22 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-
-public interface IDialogueDrawer
-{
-    IEnumerator DrawLine(string line);
-}
-
-public interface IYieldNextLine
-{
-    IEnumerator YieldNextLine();
-}
+using UnityEngine;
 
 public class Dialoguer : IAct
 {
     readonly IEnumerable<string> _lines;
-    readonly IDialogueDrawer _dialogueDrawer;
+    readonly IDialoguer _dialogueDrawer;
     readonly IYieldNextLine _yieldNextLine;
-    public Dialoguer(IEnumerable<string> lines, IDialogueDrawer dialogueDrawer, IYieldNextLine yieldNextLine)
+    public Dialoguer(IEnumerable<string> lines, IDialoguer dialogueDrawer, IYieldNextLine yieldNextLine)
     {
         _lines = lines;
         _dialogueDrawer = dialogueDrawer;
@@ -25,11 +16,13 @@ public class Dialoguer : IAct
 
     public IEnumerator Execute()
     {
+        _dialogueDrawer.StartDialogue();
         foreach (var line in _lines)
         {
             _dialogueDrawer.DrawLine(line);
             yield return _yieldNextLine.YieldNextLine();
             yield return null;
         }
+        _dialogueDrawer.EndDialogue();
     }
 }
