@@ -6,11 +6,11 @@ using UnityEngine.TestTools;
 
 public class CharacterMoverTests
 {
-    CharacterMover CreateSut(float speed)
+    CharacterMover CreateSut(float speed, IEnumerable<Direction> dirs)
     {
         var result = new GameObject().AddComponent<CharacterMover>();
         result.gameObject.AddComponent<Animator>();
-        result.DependencyInject(new GridMoveUseCase(1), speed);
+        result.DependencyInject(new GridMoveUseCase(1), speed, dirs);
         return result;
     }
 
@@ -18,12 +18,11 @@ public class CharacterMoverTests
     public IEnumerator 경로에_따라_움직여야_함()
     {
         // Arrange
-        var sut = CreateSut(50);
+        var sut = CreateSut(50, new List<Direction> { Direction.Right, Direction.Up, Direction.Up });
         sut.transform.position = Vector2.zero;
-        var directions = new List<Direction> { Direction.Right, Direction.Up, Direction.Up };
 
         // Act
-        sut.Move(directions);
+        sut.StartCoroutine(sut.Execute());
         yield return new WaitForSeconds(0.1f); // 이동 시간 대기
 
         // Assert
@@ -44,12 +43,12 @@ public class CharacterMoverTests
     IEnumerator 경로에_따라_애니메이션을_주어야_함(Direction direction, float x, float y)
     {
         // Arrange
-        var sut = CreateSut(1000);
+        var sut = CreateSut(1000, new Direction[] { direction });
         var animator = sut.GetComponent<Animator>();
         animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Character/CharacterController");
 
         // Act
-        sut.Move(new Direction[] { direction });
+        sut.StartCoroutine(sut.Execute());
 
         // Assert
         Assert.IsTrue(animator.GetBool("IsWalk"));
