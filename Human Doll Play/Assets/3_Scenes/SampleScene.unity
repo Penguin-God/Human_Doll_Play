@@ -4230,6 +4230,9 @@ MonoBehaviour:
   characterMover: {fileID: 1822308471}
   dialogue: {fileID: 1460958941}
   secnarioDirector: {fileID: 1445997980}
+  direction1: 000000000100000000000000
+  direction2: 000000000100000000000000
+  actDatas1: {fileID: 11400000, guid: 911a57eb21b3df84791cef63f76d7937, type: 2}
 --- !u!4 &1445997979
 Transform:
   m_ObjectHideFlags: 0

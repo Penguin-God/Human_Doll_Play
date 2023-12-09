@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DoTest : MonoBehaviour
@@ -8,6 +9,7 @@ public class DoTest : MonoBehaviour
     [SerializeField] CharacterMover characterMover;
     [SerializeField] UI_Dialogue dialogue;
     [SerializeField] SecnarioDirector secnarioDirector;
+    [SerializeField] ActDatas actDatas1;
 
     void Start()
     {
@@ -18,21 +20,24 @@ public class DoTest : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            var mover = new CharacterMoveActor(characterMover, new Direction[] { Direction.Up, Direction.Up, Direction.Up, Direction.Up });
-            var dialoguer = new Dialoguer(new string[] { "¾È³ç", "µå·¡" }, dialogue, dialogue);
-            var mover2 = new CharacterMoveActor(characterMover, new Direction[] { Direction.Down, Direction.Down, Direction.Down, Direction.Down});
-
-            secnarioDirector.Shooting(new IAct[] { mover, dialoguer, mover2 });
+            secnarioDirector.Shooting(CreateActs(actDatas1));
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            characterMover.DependencyInject(new GridMoveUseCase(GameSettings.TileSize), 5);
+            secnarioDirector.Shooting(CreateActs(actDatas1));
+        }
+    }
 
-            var mover = new CharacterMoveActor(characterMover, new Direction[] { Direction.Up, Direction.Up, Direction.Left, Direction.Left });
-            var dialoguer = new Dialoguer(new string[] { "dd", "ss", "ff" }, dialogue, dialogue);
-            var mover2 = new CharacterMoveActor(characterMover, new Direction[] { Direction.Down, Direction.Right, Direction.Left, Direction.Left, Direction.Left, Direction.Left });
+    IEnumerable<IAct> CreateActs(ActDatas actDatas) => actDatas.actDatas.Select(x => CreateAct(x));
 
-            secnarioDirector.Shooting(new IAct[] { mover, dialoguer, mover2 });
+    IAct CreateAct(ActData actData)
+    {
+        switch (actData.selectedAction)
+        {
+            case ActionEnum.Move: return new CharacterMoveActor(characterMover, actData.dirs);
+            case ActionEnum.Dialogue: return new Dialoguer(actData.dialogue, dialogue, dialogue);
+            case ActionEnum.Interact: return null;
+            default: return null;
         }
     }
 }
