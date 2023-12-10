@@ -24,21 +24,25 @@ MonoBehaviour:
   actDatas:
   - selectedAction: 0
     dirs: 0200000002000000020000000200000002000000020000000200000002000000020000000000000000000000000000000000000003000000
+    direction: 0
     dialogue: []
-    interactableObject: {fileID: 0}
+  - selectedAction: 2
+    dirs: 
+    direction: 0
+    dialogue: []
   - selectedAction: 1
     dirs: 
+    direction: 0
     dialogue:
     - "\u3160\u3160"
     - "\uC548\uC5F4\uB824"
     - "\uC5F4\uC1E0\uAC00 \uC5B4\uB514\uC788\uC9C0"
-    interactableObject: {fileID: 0}
   - selectedAction: 0
     dirs: 020000000000000000000000000000000000000000000000
+    direction: 0
     dialogue: []
-    interactableObject: {fileID: 0}
   - selectedAction: 1
     dirs: 
+    direction: 0
     dialogue:
     - "\uC5EC\uAE30\uC788\uB2E4!"
-    interactableObject: {fileID: 0}

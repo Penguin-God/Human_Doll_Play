@@ -35,8 +35,8 @@ public class DoTest : MonoBehaviour
         switch (actData.selectedAction)
         {
             case ActionEnum.Move: return new CharacterMoveActor(characterMover, actData.dirs);
+            case ActionEnum.Rotate: return new CharacterRotator(characterMover, actData.direction);
             case ActionEnum.Dialogue: return new Dialoguer(actData.dialogue, dialogue, dialogue);
-            case ActionEnum.Interact: return null;
             default: return null;
         }
     }

@@ -8,7 +8,7 @@ public enum ActionEnum
 {
     Move,
     Dialogue,
-    Interact,
+    Rotate,
 }
 
 [Serializable]
@@ -23,8 +23,8 @@ public class ActData
     [SerializeField, ShowIf("selectedAction", ActionEnum.Dialogue), TextArea]
     public string[] dialogue;
 
-    [SerializeField, ShowIf("selectedAction", ActionEnum.Interact)]
-    public GameObject interactableObject;
+    [SerializeField, ShowIf("selectedAction", ActionEnum.Rotate), EnumToggleButtons]
+    public Direction direction;
 }
 
 [CreateAssetMenu(fileName = "ActDatas", menuName = "ScripableOject/ActDatas")]
