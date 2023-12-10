@@ -25,6 +25,14 @@ public class DoTest : MonoBehaviour
         {
             secnarioDirector.Shooting(CreateActs(actDatas1));
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            secnarioDirector.Shooting(CreateActs(actDatas1));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            secnarioDirector.Shooting(CreateActs(actDatas1));
+        }
     }
 
     IEnumerable<IAct> CreateActs(ActDatas actDatas) => actDatas.actDatas.Select(x => CreateAct(x));
