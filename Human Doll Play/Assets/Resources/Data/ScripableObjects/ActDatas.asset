@@ -32,10 +32,12 @@ MonoBehaviour:
       moveCount: 1
     dialogue: []
     rotateDir: 0
+    clip: {fileID: 0}
   - selectedAction: 2
     moveDatas: []
     dialogue: []
     rotateDir: 0
+    clip: {fileID: 0}
   - selectedAction: 1
     moveDatas: []
     dialogue:
@@ -43,6 +45,18 @@ MonoBehaviour:
     - "\uC548\uC5F4\uB824"
     - "\uC5F4\uC1E0\uAC00 \uC5B4\uB514\uC788\uC9C0"
     rotateDir: 0
+    clip: {fileID: 0}
+  - selectedAction: 3
+    moveDatas: []
+    dialogue: []
+    rotateDir: 0
+    clip: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
+  - selectedAction: 1
+    moveDatas: []
+    dialogue:
+    - "\uBB54 \uC18C\uB9AC\uC5EC"
+    rotateDir: 0
+    clip: {fileID: 0}
   - selectedAction: 0
     moveDatas:
     - moveDir: 2
@@ -51,8 +65,10 @@ MonoBehaviour:
       moveCount: 4
     dialogue: []
     rotateDir: 0
+    clip: {fileID: 0}
   - selectedAction: 1
     moveDatas: []
     dialogue:
     - "\uC5EC\uAE30\uC788\uB2E4!"
     rotateDir: 0
+    clip: {fileID: 0}
