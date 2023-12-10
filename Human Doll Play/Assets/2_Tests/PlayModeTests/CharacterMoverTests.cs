@@ -14,10 +14,12 @@ public class CharacterMoverTests
         return result;
     }
 
-    void Move(CharacterMover mover, IEnumerable<Direction> dirs)
+    void Move(CharacterMover mover, IEnumerable<MoveEntity> dirs)
     {
         mover.StartCoroutine(new CharacterMoveActor(mover, dirs).Execute());
     }
+
+    MoveEntity CreateEntity(Direction dir, int count = 1) => new MoveEntity(dir, count);
 
     [UnityTest]
     public IEnumerator 경로에_따라_움직여야_함()
@@ -27,7 +29,7 @@ public class CharacterMoverTests
         sut.transform.position = Vector2.zero;
 
         // Act
-        Move(sut, new List<Direction> { Direction.Right, Direction.Up, Direction.Up });
+        Move(sut, new MoveEntity[] { CreateEntity(Direction.Right, 1), CreateEntity(Direction.Up, 2) });
         yield return new WaitForSeconds(0.1f); // 이동 시간 대기
 
         // Assert
@@ -53,7 +55,7 @@ public class CharacterMoverTests
         animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Character/CharacterController");
 
         // Act
-        Move(sut, new Direction[] { direction });
+        Move(sut, new MoveEntity[] { CreateEntity(direction, 1) });
 
         // Assert
         Assert.IsTrue(animator.GetBool("IsWalk"));

@@ -33,11 +33,11 @@ public class CharacterMover : MonoBehaviour
         _animator.SetFloat("DirY", dir.y);
     }
 
-    public IEnumerator Co_Move(Direction direction)
+    public IEnumerator Co_Move(MoveEntity moveEntity)
     {
-        PlayWalkAnima(direction);
+        PlayWalkAnima(moveEntity.Direction);
 
-        Vector2 destination = _gridMoveUseCase.CalculateDestination(transform.position, direction);
+        Vector2 destination = _gridMoveUseCase.CalculateDestination(moveEntity, transform.position);
         while (Vector2.Distance(transform.position, destination) > Mathf.Epsilon)
         {
             // 선형 보간. 거리가 이동할 크기보다 작으면 목적지 반환.
@@ -45,7 +45,7 @@ public class CharacterMover : MonoBehaviour
             yield return null;
         }
 
-        PlayIdleAnima(direction);
+        PlayIdleAnima(moveEntity.Direction);
     }
 
     public void RotateToDir(Direction direction) => PlayIdleAnima(direction);

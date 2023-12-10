@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Direction
-{
-    Up,
-    Down,
-    Left,
-    Right
-}
-
 public class GridMoveUseCase
 {
     readonly int TileSize;
@@ -26,4 +18,6 @@ public class GridMoveUseCase
             default: return Vector2.zero;
         }
     }
+
+    public Vector2 CalculateDestination(MoveEntity moveEntitiy, Vector2 currentPos) => currentPos + (DirToVector(moveEntitiy.Direction) * moveEntitiy.MoveCount * TileSize);
 }

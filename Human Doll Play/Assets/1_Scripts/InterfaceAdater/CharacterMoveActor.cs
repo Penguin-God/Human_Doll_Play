@@ -5,17 +5,17 @@ using UnityEngine;
 public class CharacterMoveActor : IAct
 {
     readonly CharacterMover _mover;
-    readonly IEnumerable<Direction> _dirs;
-    public CharacterMoveActor(CharacterMover mover, IEnumerable<Direction> dirs)
+    readonly IEnumerable<MoveEntity> _moves;
+    public CharacterMoveActor(CharacterMover mover, IEnumerable<MoveEntity> dirs)
     {
         _mover = mover;
-        _dirs = dirs;
+        _moves = dirs;
     }
 
     public IEnumerator Execute()
     {
-        foreach (var dir in _dirs)
-            yield return _mover.Co_Move(dir);
+        foreach (var move in _moves)
+            yield return _mover.Co_Move(move);
     }
 }
 

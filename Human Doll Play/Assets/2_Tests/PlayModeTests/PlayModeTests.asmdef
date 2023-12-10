@@ -6,7 +6,9 @@
         "UnityEditor.TestRunner",
         "UseCase",
         "InterfaceAdater",
-        "UseCaseInterface"
+        "UseCaseInterface",
+        "Utility",
+        "Domain"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

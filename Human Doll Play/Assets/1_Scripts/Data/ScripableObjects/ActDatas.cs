@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
+using System.Linq;
 
 public enum ActionEnum
 {
@@ -12,19 +13,29 @@ public enum ActionEnum
 }
 
 [Serializable]
+public class MoveData
+{
+    [EnumToggleButtons]
+    public Direction moveDir;
+    public int moveCount = 1;
+}
+
+[Serializable]
 public class ActData
 {
     [SerializeField, EnumToggleButtons]
     public ActionEnum selectedAction;
 
-    [SerializeField, ShowIf("selectedAction", ActionEnum.Move), EnumToggleButtons]
-    public Direction[] dirs;
+    [SerializeField, ShowIf("selectedAction", ActionEnum.Move)]
+    MoveData[] moveDatas;
+
+    public IEnumerable<MoveEntity> MoveEntities => moveDatas.Select(x => new MoveEntity(x.moveDir, x.moveCount));
 
     [SerializeField, ShowIf("selectedAction", ActionEnum.Dialogue), TextArea]
     public string[] dialogue;
 
     [SerializeField, ShowIf("selectedAction", ActionEnum.Rotate), EnumToggleButtons]
-    public Direction direction;
+    public Direction rotateDir;
 }
 
 [CreateAssetMenu(fileName = "ActDatas", menuName = "ScripableOject/ActDatas")]

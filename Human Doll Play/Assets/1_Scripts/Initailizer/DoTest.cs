@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,8 +33,8 @@ public class DoTest : MonoBehaviour
     {
         switch (actData.selectedAction)
         {
-            case ActionEnum.Move: return new CharacterMoveActor(characterMover, actData.dirs);
-            case ActionEnum.Rotate: return new CharacterRotator(characterMover, actData.direction);
+            case ActionEnum.Move: return new CharacterMoveActor(characterMover, actData.MoveEntities);
+            case ActionEnum.Rotate: return new CharacterRotator(characterMover, actData.rotateDir);
             case ActionEnum.Dialogue: return new Dialoguer(actData.dialogue, dialogue, dialogue);
             default: return null;
         }
