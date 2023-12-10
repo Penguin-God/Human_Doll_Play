@@ -10,6 +10,7 @@ public enum ActionEnum
     Move,
     Dialogue,
     Rotate,
+    Sound,
 }
 
 [Serializable]
@@ -36,6 +37,9 @@ public class ActData
 
     [SerializeField, ShowIf("selectedAction", ActionEnum.Rotate), EnumToggleButtons]
     public Direction rotateDir;
+
+    [SerializeField, ShowIf("selectedAction", ActionEnum.Sound)]
+    public AudioClip clip;
 }
 
 [CreateAssetMenu(fileName = "ActDatas", menuName = "ScripableOject/ActDatas")]

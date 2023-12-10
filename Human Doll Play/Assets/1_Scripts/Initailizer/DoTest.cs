@@ -36,6 +36,7 @@ public class DoTest : MonoBehaviour
             case ActionEnum.Move: return new CharacterMoveActor(characterMover, actData.MoveEntities);
             case ActionEnum.Rotate: return new CharacterRotator(characterMover, actData.rotateDir);
             case ActionEnum.Dialogue: return new Dialoguer(actData.dialogue, dialogue, dialogue);
+            case ActionEnum.Sound: return new SoundActor(actData.clip);
             default: return null;
         }
     }
