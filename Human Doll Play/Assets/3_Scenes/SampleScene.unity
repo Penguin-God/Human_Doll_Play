@@ -2542,7 +2542,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1822308470}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &667070992
 GameObject:
@@ -4230,8 +4230,6 @@ MonoBehaviour:
   characterMover: {fileID: 1822308471}
   dialogue: {fileID: 1460958941}
   secnarioDirector: {fileID: 1445997980}
-  direction1: 000000000100000000000000
-  direction2: 000000000100000000000000
   actDatas1: {fileID: 11400000, guid: 911a57eb21b3df84791cef63f76d7937, type: 2}
 --- !u!4 &1445997979
 Transform:
@@ -24695,8 +24693,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 519420032}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1822308471
@@ -24812,6 +24809,7 @@ RectTransform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 519420032}
   - {fileID: 1822308470}
   - {fileID: 1445997979}
   - {fileID: 667070995}

@@ -1,4 +1,3 @@
-using Codice.CM.Common;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,12 +14,28 @@ public class CharacterMover : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public IEnumerator Co_Move(Direction direction)
+    void PlayWalkAnima(Direction direction)
     {
+        PlayDirAnima(direction);
         _animator.SetBool("IsWalk", true);
+    }
+
+    void PlayIdleAnima(Direction direction)
+    {
+        PlayDirAnima(direction);
+        _animator.SetBool("IsWalk", false);
+    }
+
+    void PlayDirAnima(Direction direction)
+    {
         Vector2 dir = _gridMoveUseCase.DirToVector(direction);
         _animator.SetFloat("DirX", dir.x);
         _animator.SetFloat("DirY", dir.y);
+    }
+
+    public IEnumerator Co_Move(Direction direction)
+    {
+        PlayWalkAnima(direction);
 
         Vector2 destination = _gridMoveUseCase.CalculateDestination(transform.position, direction);
         while (Vector2.Distance(transform.position, destination) > Mathf.Epsilon)
@@ -29,6 +44,9 @@ public class CharacterMover : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, destination, _speed * Time.deltaTime);
             yield return null;
         }
-        _animator.SetBool("IsWalk", false);
+
+        PlayIdleAnima(direction);
     }
+
+    public void RotateToDir(Direction direction) => PlayIdleAnima(direction);
 }

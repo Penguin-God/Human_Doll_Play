@@ -65,4 +65,29 @@ public class CharacterMoverTests
 
         Object.Destroy(sut.gameObject);
     }
+
+    [UnityTest]
+    public IEnumerator 경로에_따라_회전을_해야_함()
+    {
+        yield return 경로에_따라_회전을_해야_함(Direction.Up, 0, 1);
+        yield return 경로에_따라_회전을_해야_함(Direction.Down, 0, -1);
+        yield return 경로에_따라_회전을_해야_함(Direction.Left, -1, 0);
+        yield return 경로에_따라_회전을_해야_함(Direction.Right, 1, 0);
+    }
+
+    public IEnumerator 경로에_따라_회전을_해야_함(Direction direction, float x, float y)
+    {
+        var sut = CreateSut(0);
+        var animator = sut.GetComponent<Animator>();
+        animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Character/CharacterController");
+
+        sut.RotateToDir(direction);
+        yield return null;
+
+        Assert.AreEqual(x, animator.GetFloat("DirX"));
+        Assert.AreEqual(y, animator.GetFloat("DirY"));
+        Assert.IsFalse(animator.GetBool("IsWalk"));
+        
+        Object.Destroy(sut.gameObject);
+    }
 }
