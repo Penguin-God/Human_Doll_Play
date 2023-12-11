@@ -8,8 +8,10 @@ public interface IAct
 }
 
 
-public class SecnarioDirector : MonoBehaviour
+public class ScriptPhotographer : MonoBehaviour
 {
+    IEnumerable<IAct> _scriptBook;
+    public void SetScriptBook(IEnumerable<IAct> scriptBook) => _scriptBook = scriptBook;
     public void Shooting(IEnumerable<IAct> acts) => StartCoroutine(Co_Shooting(acts));
 
     IEnumerator Co_Shooting(IEnumerable<IAct> acts)
