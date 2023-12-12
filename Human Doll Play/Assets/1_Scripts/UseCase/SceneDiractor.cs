@@ -2,6 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class NudgeParmeter
+{
+    public readonly string Name;
+    public int Value;
+
+    public NudgeParmeter(string name, int value)
+    {
+        Name = name;
+        Value = value;
+    }
+}
+
 public class SceneDiractor : MonoBehaviour
 {
     SinarioNode _startNode;

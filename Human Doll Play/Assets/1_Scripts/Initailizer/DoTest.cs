@@ -7,7 +7,7 @@ public class DoTest : MonoBehaviour
 {
     [SerializeField] CharacterMover characterMover;
     [SerializeField] UI_Dialogue dialogue;
-    [SerializeField] ScriptPhotographer secnarioDirector;
+    [SerializeField] SceneDiractor secnarioDirector;
     [SerializeField] ActDatas actDatas1;
 
     void Start()
@@ -17,22 +17,27 @@ public class DoTest : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            secnarioDirector.Shooting(CreateActs(actDatas1));
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            secnarioDirector.Shooting(CreateActs(actDatas1));
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            secnarioDirector.Shooting(CreateActs(actDatas1));
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            secnarioDirector.Shooting(CreateActs(actDatas1));
-        }
+        //if(Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    secnarioDirector.Shooting(CreateActs(actDatas1));
+        //}
+        //else if(Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    secnarioDirector.Shooting(CreateActs(actDatas1));
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    secnarioDirector.Shooting(CreateActs(actDatas1));
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    secnarioDirector.Shooting(CreateActs(actDatas1));
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    secnarioDirector.Shooting(CreateActs(actDatas1));
+        //}
     }
 
     IEnumerable<IAct> CreateActs(ActDatas actDatas) => actDatas.actDatas.Select(x => CreateAct(x));

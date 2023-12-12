@@ -1734,8 +1734,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.049650013, y: 0.061499953, z: 0}
-    m_Extent: {x: 1.46415, y: 1.533, z: 0}
+    m_Center: {x: -0.05580002, y: 0.054199994, z: 0}
+    m_Extent: {x: 1.4573, y: 1.5325, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -4590,7 +4590,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1445997979}
   - component: {fileID: 1445997978}
-  - component: {fileID: 1445997980}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -4612,7 +4611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterMover: {fileID: 1822308471}
   dialogue: {fileID: 1460958941}
-  secnarioDirector: {fileID: 1445997980}
+  secnarioDirector: {fileID: 0}
   actDatas1: {fileID: 11400000, guid: 911a57eb21b3df84791cef63f76d7937, type: 2}
 --- !u!4 &1445997979
 Transform:
@@ -4629,18 +4628,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1445997980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1445997977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d5c8ced305a81469d7923c1a32033a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1460885558
 GameObject:
   m_ObjectHideFlags: 0
