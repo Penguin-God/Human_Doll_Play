@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab680358c476fcd4dadefa0b00e9d500, type: 3}
+  m_Name: Sonario2
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  actDatas:
+  - selectedAction: 1
+    moveDatas: []
+    dialogue:
+    - "\uC544\uCE68.... \uC778\uAC00?"
+    - "\uBAB0\uB77C \uADF8\uB0E5 \uC790\uC57C\uC9C0"
+    rotateDir: 0
+    clip: {fileID: 0}
