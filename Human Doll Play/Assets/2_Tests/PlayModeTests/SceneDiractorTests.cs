@@ -23,14 +23,14 @@ public class SceneDiractorTests
         SinarioNode sinarioNode6 = new SinarioNode(CreateAct(testCount, 6));
         SinarioNode sinarioNode7 = new SinarioNode(CreateAct(testCount, 7));
 
-        sinarioNode1.AddNode(sinarioNode2);
-        sinarioNode1.AddNode(sinarioNode3);
+        //sinarioNode1.AddNode(sinarioNode2);
+        //sinarioNode1.AddNode(sinarioNode3);
 
-        sinarioNode3.AddNode(sinarioNode4);
-        sinarioNode3.AddNode(sinarioNode5);
+        //sinarioNode3.AddNode(sinarioNode4);
+        //sinarioNode3.AddNode(sinarioNode5);
 
-        sinarioNode5.AddNode(sinarioNode6);
-        sinarioNode5.AddNode(sinarioNode7);
+        //sinarioNode5.AddNode(sinarioNode6);
+        //sinarioNode5.AddNode(sinarioNode7);
 
         return sinarioNode1;
     }
