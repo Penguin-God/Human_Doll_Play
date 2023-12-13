@@ -16,7 +16,7 @@ public static class SinarioTestHelper
         SinarioNode sinarioNode3 = new ();
         SinarioNode sinarioNode4 = new ();
         SinarioNode sinarioNode5 = new ();
-        SinarioNode sinarioNode6 = new ();
+        SinarioNode sinarioNode6 = SinarioNode.CreateSuccessNode();
 
         var sinarioEdge1 = CreateEdge(new NudgeParmeter("A", 0));
         var sinarioEdge2 = CreateEdge(new NudgeParmeter("A", 1), new NudgeParmeter("B", 0));

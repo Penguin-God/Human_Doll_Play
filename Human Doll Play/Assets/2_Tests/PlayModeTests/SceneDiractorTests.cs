@@ -40,6 +40,7 @@ public class SceneDiractorTests
         yield return null;
         yield return null;
         Assert.AreEqual(expected, testCount.Count);
+        Object.Destroy(sut.gameObject);
     }
 
     NudgeParmeter[][] CreateCondtions(int a, int b, int c) 
@@ -65,6 +66,7 @@ public class SceneDiractorTests
         yield return null;
         yield return null;
         Assert.AreEqual(expected, result);
+        Object.Destroy(sut.gameObject);
     }
 
     public class TestCount

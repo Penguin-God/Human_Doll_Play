@@ -28,6 +28,20 @@ public class SinarioEdge
     public bool CheckCondition(IEnumerable<NudgeParmeter> conditions) => _transtionCondtions.All(parm => conditions.Any(x => x.Name == parm.Name && x.Value == parm.Value));
 }
 
+public readonly struct SinarioData
+{
+    public readonly IEnumerable<IAct> Sinario;
+    public readonly bool IsLast;
+    public readonly bool IsShootingSuccess;
+
+    public SinarioData(IEnumerable<IAct> sinario, bool isLast, bool isShootingSuccess)
+    {
+        Sinario = sinario;
+        IsLast = isLast;
+        IsShootingSuccess = isShootingSuccess;
+    }
+}
+
 public class SinarioGraph
 {
     Dictionary<SinarioNode, IEnumerable<IAct>> _nodeBySinario = new();
@@ -45,6 +59,12 @@ public class SinarioGraph
         _currentNode = _currentNode.GetNextScenario(nudgeParmeters);
         sinario = _nodeBySinario[_currentNode];
         return _currentNode.IsLast;
+    }
+
+    public SinarioData MoveNextSinario(IEnumerable<NudgeParmeter> nudgeParmeters)
+    {
+        _currentNode = _currentNode.GetNextScenario(nudgeParmeters);
+        return new SinarioData(_nodeBySinario[_currentNode], _currentNode.IsLast, _currentNode.IsSuccess);
     }
 
     public void ResetSianrio() => _currentNode = _startNode;

@@ -20,25 +20,26 @@ public class SinarioGraphTests
         var sut = SinarioTestHelper.CreateFiveSinarioGraph(sinario2, sinario3, sinario4, sinario5, sinario6);
 
         //Act & Assert
-        AssertMoveSinario(sut, true, sinario2, a: 0);
+        AssertMoveSinario(sut, true, false, sinario2, a: 0);
         sut.ResetSianrio();
 
-        AssertMoveSinario(sut, true, sinario3, a: 1, b: 0);
+        AssertMoveSinario(sut, true, false, sinario3, a: 1, b: 0);
         sut.ResetSianrio();
 
-        AssertMoveSinario(sut, false, sinario4, a: 1, b: 1);
-        AssertMoveSinario(sut, true, sinario5, c:0);
+        AssertMoveSinario(sut, false, false, sinario4, a: 1, b: 1);
+        AssertMoveSinario(sut, true, false, sinario5, c: 0);
         sut.ResetSianrio();
 
-        AssertMoveSinario(sut, false, sinario4, a: 1, b: 1);
-        AssertMoveSinario(sut, true, sinario6, c: 1);
+        AssertMoveSinario(sut, false, false, sinario4, a: 1, b: 1);
+        AssertMoveSinario(sut, true, true, sinario6, c: 1);
     }
 
-    void AssertMoveSinario(SinarioGraph sut, bool expected, IEnumerable<IAct> sinario, int a = -1, int b = -1, int c = -1)
+    void AssertMoveSinario(SinarioGraph sut, bool expectedLast, bool expectedSuccess, IEnumerable<IAct> sinario, int a = -1, int b = -1, int c = -1)
     {
-        bool result = sut.MoveNextSinario(SinarioTestHelper.CreateParms(a, b, c), out var sinarioResult);
-        Assert.AreEqual(expected, result);
-        Assert.AreSame(sinario, sinarioResult);
+        var result = sut.MoveNextSinario(SinarioTestHelper.CreateParms(a, b, c));
+        Assert.AreSame(sinario, result.Sinario);
+        Assert.AreEqual(expectedLast, result.IsLast);
+        Assert.AreEqual(expectedSuccess, result.IsShootingSuccess);
     }
 
     public class TestCount : IAct
