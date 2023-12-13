@@ -31,19 +31,28 @@ public class SinarioEdge
 {
     public SinarioEdge(IEnumerable<NudgeParmeter> parmeters) => _parmeters = parmeters;
 
-
     IEnumerable<NudgeParmeter> _parmeters = new List<NudgeParmeter>();
     public bool CheckCondition(IEnumerable<NudgeParmeter> conditions) => _parmeters.All(parm => conditions.Any(x => x.Name == parm.Name && x.Value == parm.Value));
 }
 
 public class SinarioGraph
 {
-    List<SinarioEdge> _startTranstion = new ();
+    Dictionary<SinarioNode, IEnumerable<IAct>> _nodeBySinario = new();
+    SinarioNode _startSinario;
     SinarioNode _currentNode = null;
-    public void AddStartTranstion(SinarioEdge sinarioTranstion) => _startTranstion.Add(sinarioTranstion);
+    public SinarioGraph(SinarioNode startSinario)
+    {
+        _startSinario = startSinario;
+        _currentNode = startSinario;
+    }
+    public void AddSianrio(SinarioNode node, IEnumerable<IAct> sinario) => _nodeBySinario.Add(node, sinario);
 
-    //public SinarioNode MoveNextNode(IEnumerable<NudgeParmeter> nudgeParmeters)
-    //{
-    //    return _currentNode.GetNextScenario(nudgeParmeters);
-    //}
+    public bool MoveNextNode(IEnumerable<NudgeParmeter> nudgeParmeters, out IEnumerable<IAct> sinario)
+    {
+        _currentNode = _currentNode.GetNextScenario(nudgeParmeters);
+        sinario = _nodeBySinario[_currentNode];
+        return _currentNode.IsLast;
+    }
+
+    public void ResetSianrio() => _currentNode = _startSinario;
 }
