@@ -4,14 +4,10 @@ using System.Linq;
 
 public class SinarioNode
 {
-    public SinarioNode(IEnumerable<IAct> sinario)
-    {
-        Sinario = sinario;
-
-    }
+    public SinarioNode(IEnumerable<IAct> sinario) => Sinario = sinario;
 
     public readonly IEnumerable<IAct> Sinario;
-    Dictionary<SinarioEdge, SinarioNode> _edgeByTarget = new Dictionary<SinarioEdge, SinarioNode>();
+    Dictionary<SinarioEdge, SinarioNode> _edgeByTarget = new ();
     public void AddTranstion(SinarioEdge edge, SinarioNode target) => _edgeByTarget.Add(edge, target);
 
     public bool IsLast => _edgeByTarget == null || _edgeByTarget.Count() == 0;
@@ -42,7 +38,7 @@ public class SinarioEdge
 
 public class SinarioGraph
 {
-    List<SinarioEdge> _startTranstion = new List<SinarioEdge>();
+    List<SinarioEdge> _startTranstion = new ();
     SinarioNode _currentNode = null;
     public void AddStartTranstion(SinarioEdge sinarioTranstion) => _startTranstion.Add(sinarioTranstion);
 
