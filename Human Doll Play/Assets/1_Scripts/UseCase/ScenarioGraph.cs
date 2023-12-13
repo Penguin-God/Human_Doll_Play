@@ -54,13 +54,6 @@ public class SinarioGraph
     }
     public void AddSianrio(SinarioNode node, IEnumerable<IAct> sinario) => _nodeBySinario.Add(node, sinario);
 
-    public bool MoveNextSinario(IEnumerable<NudgeParmeter> nudgeParmeters, out IEnumerable<IAct> sinario)
-    {
-        _currentNode = _currentNode.GetNextScenario(nudgeParmeters);
-        sinario = _nodeBySinario[_currentNode];
-        return _currentNode.IsLast;
-    }
-
     public SinarioData MoveNextSinario(IEnumerable<NudgeParmeter> nudgeParmeters)
     {
         _currentNode = _currentNode.GetNextScenario(nudgeParmeters);

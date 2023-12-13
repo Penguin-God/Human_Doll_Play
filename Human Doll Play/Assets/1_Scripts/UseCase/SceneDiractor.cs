@@ -24,12 +24,15 @@ public class SceneDiractor : MonoBehaviour
     public void Shooting(IEnumerable<IEnumerable<NudgeParmeter>> nudgeParmeters) => StartCoroutine(Co_Shooting(nudgeParmeters));
     IEnumerator Co_Shooting(IEnumerable<IEnumerable<NudgeParmeter>> nudgeParmeters)
     {
+        SinarioData sinarioData = new();
         foreach (var parmeters in nudgeParmeters)
         {
-            bool isLast = _sinarioGraph.MoveNextSinario(parmeters, out var sinario);
-            yield return StartCoroutine(Co_Shooting(sinario));
-            if (isLast) break;
+            sinarioData = _sinarioGraph.MoveNextSinario(parmeters);
+            yield return StartCoroutine(Co_Shooting(sinarioData.Sinario));
+            if (sinarioData.IsLast) break;
         }
+
+        OnShootingDone?.Invoke(sinarioData.IsShootingSuccess);
     }
 
     IEnumerator Co_Shooting(IEnumerable<IAct> sinario)
