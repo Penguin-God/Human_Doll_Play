@@ -6,3 +6,8 @@ public interface ISceneEnvirment
     public void SetupEnvierment();
     public int GetState();
 }
+
+public interface IAct
+{
+    IEnumerator Execute();
+}

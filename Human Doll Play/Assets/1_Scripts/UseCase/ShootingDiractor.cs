@@ -15,7 +15,7 @@ public class NudgeParmeter
     }
 }
 
-public class SceneDiractor : MonoBehaviour
+public class ShootingDiractor : MonoBehaviour
 {
     SinarioGraph _sinarioGraph;
     public void SetGrahp(SinarioGraph sinarioGraph) => _sinarioGraph = sinarioGraph;

@@ -7,7 +7,7 @@ public class DoTest : MonoBehaviour
 {
     [SerializeField] CharacterMover characterMover;
     [SerializeField] UI_Dialogue dialogue;
-    [SerializeField] SceneDiractor secnarioDirector;
+    [SerializeField] ShootingDiractor secnarioDirector;
     [SerializeField] ActDatas actDatas1;
 
     void Start()

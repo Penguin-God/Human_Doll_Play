@@ -7,9 +7,9 @@ using UnityEngine.TestTools;
 public class SceneDiractorTests
 {
     IEnumerable<IAct> CreateSinario(int amount, TestCount count) => new IAct[] { new TestAct(count, amount) };
-    SceneDiractor CreateSut(TestCount count)
+    ShootingDiractor CreateSut(TestCount count)
     {
-        var result = new GameObject().AddComponent<SceneDiractor>();
+        var result = new GameObject().AddComponent<ShootingDiractor>();
 
         var sinario2 = CreateSinario(2, count);
         var sinario3 = CreateSinario(3, count);
