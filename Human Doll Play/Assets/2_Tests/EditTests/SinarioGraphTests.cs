@@ -63,7 +63,7 @@ public class SinarioGraphTests
 
     void AssertMoveSinario(SinarioGraph sut, bool expected, IEnumerable<IAct> sinario, int a = -1, int b = -1, int c = -1)
     {
-        bool result = sut.MoveNextNode(CraeteParms(a, b, c), out var sinarioResult);
+        bool result = sut.MoveNextSinario(CraeteParms(a, b, c), out var sinarioResult);
         Assert.AreEqual(expected, result);
         Assert.AreSame(sinario, sinarioResult);
     }

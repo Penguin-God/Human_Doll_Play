@@ -10,6 +10,7 @@ public class SinarioNode
     Dictionary<SinarioEdge, SinarioNode> _edgeByTarget = new ();
     public void AddTranstion(SinarioEdge edge, SinarioNode target) => _edgeByTarget.Add(edge, target);
 
+    public bool IsSuccess { get; private set; } = false;
     public bool IsLast => _edgeByTarget == null || _edgeByTarget.Count() == 0;
 
     public SinarioNode GetNextScenario(int index)
@@ -25,6 +26,8 @@ public class SinarioNode
 
         return _edgeByTarget.First(x => x.Key.CheckCondition(parmeters)).Value;
     }
+
+    public static SinarioNode CreateSuccessNode() => new (null) { IsSuccess = true };
 }
 
 public class SinarioEdge
@@ -47,7 +50,7 @@ public class SinarioGraph
     }
     public void AddSianrio(SinarioNode node, IEnumerable<IAct> sinario) => _nodeBySinario.Add(node, sinario);
 
-    public bool MoveNextNode(IEnumerable<NudgeParmeter> nudgeParmeters, out IEnumerable<IAct> sinario)
+    public bool MoveNextSinario(IEnumerable<NudgeParmeter> nudgeParmeters, out IEnumerable<IAct> sinario)
     {
         _currentNode = _currentNode.GetNextScenario(nudgeParmeters);
         sinario = _nodeBySinario[_currentNode];
