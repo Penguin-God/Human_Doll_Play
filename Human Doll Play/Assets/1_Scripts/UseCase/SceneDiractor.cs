@@ -16,12 +16,6 @@ public class NudgeParmeter
 
 public class SceneDiractor : MonoBehaviour
 {
-    SinarioNode _startNode;
-    public void SetNode(SinarioNode startNode)
-    {
-        _startNode = startNode;
-    }
-
     SinarioGraph _sinarioGraph;
     public void SetGrahp(SinarioGraph sinarioGraph) => _sinarioGraph = sinarioGraph;
 
@@ -33,18 +27,6 @@ public class SceneDiractor : MonoBehaviour
             bool isLast = _sinarioGraph.MoveNextSinario(parmeters, out var sinario);
             yield return StartCoroutine(Co_Shooting(sinario));
             if (isLast) break;
-        }
-    }
-
-    public void Shooting(IEnumerable<int> indexs) => StartCoroutine(Co_Shooting(indexs));
-
-    IEnumerator Co_Shooting(IEnumerable<int> indexs)
-    {
-        SinarioNode shootingNode = _startNode;
-        foreach (var index in indexs)
-        {
-            yield return StartCoroutine(Co_Shooting(shootingNode.Sinario));
-            shootingNode = shootingNode.GetNextScenario(index);
         }
     }
 
