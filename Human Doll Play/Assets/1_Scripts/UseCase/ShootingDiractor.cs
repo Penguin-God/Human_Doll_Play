@@ -9,16 +9,15 @@ public class ShootingDiractor : MonoBehaviour
     public void SetGrahp(SinarioGraph sinarioGraph) => _sinarioGraph = sinarioGraph;
     public event Action<bool> OnShootingDone = null;
 
-    public void Shooting(IEnumerable<IEnumerable<NudgeParameter>> nudgeParmeters) => StartCoroutine(Co_Shooting(nudgeParmeters));
-    IEnumerator Co_Shooting(IEnumerable<IEnumerable<NudgeParameter>> nudgeParmeters)
+    public void Shooting(IEnumerable<NudgeParameter> nudgeParmeters) => StartCoroutine(Co_Shooting(nudgeParmeters));
+    IEnumerator Co_Shooting(IEnumerable<NudgeParameter> nudgeParmeters)
     {
-        SinarioData sinarioData = new();
-        foreach (var parmeters in nudgeParmeters)
+        SinarioData sinarioData;
+        do
         {
-            sinarioData = _sinarioGraph.MoveNextSinario(parmeters);
+            sinarioData = _sinarioGraph.MoveNextSinario(nudgeParmeters);
             yield return StartCoroutine(Co_Shooting(sinarioData.Sinario));
-            if (sinarioData.IsLast) break;
-        }
+        } while (sinarioData.IsLast == false);
 
         OnShootingDone?.Invoke(sinarioData.IsShootingSuccess);
     }
