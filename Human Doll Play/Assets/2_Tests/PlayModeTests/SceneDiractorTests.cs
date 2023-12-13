@@ -24,13 +24,11 @@ public class SceneDiractorTests
     [UnityTest]
     public IEnumerator 조건에_맞는_시나리오를_실행시켜야_함()
     {
-        조건에_맞는_시나리오를_실행시켜야_함(2, a:0);
-        조건에_맞는_시나리오를_실행시켜야_함(3, a:1, b:0);
+        yield return 조건에_맞는_시나리오를_실행시켜야_함(2, a:0);
+        yield return 조건에_맞는_시나리오를_실행시켜야_함(3, a:1, b:0);
 
-        조건에_맞는_시나리오를_실행시켜야_함(9, a: 1, b: 1, c: 0);
-        조건에_맞는_시나리오를_실행시켜야_함(10, a: 1, b: 1, c: 1);
-
-        yield return null;
+        yield return 조건에_맞는_시나리오를_실행시켜야_함(9, a: 1, b: 1, c: 0);
+        yield return 조건에_맞는_시나리오를_실행시켜야_함(10, a: 1, b: 1, c: 1);
     }
 
     public IEnumerator 조건에_맞는_시나리오를_실행시켜야_함(int expected, int a = -1, int b = -1, int c = -1)
@@ -38,10 +36,35 @@ public class SceneDiractorTests
         TestCount testCount = new TestCount();
         var sut = CreateSut(testCount);
 
-        sut.Shooting(new NudgeParmeter[][] {new NudgeParmeter[] {new NudgeParmeter("A", a), new NudgeParmeter("B", b) }, new NudgeParmeter[] { new NudgeParmeter("C", c) } });
+        sut.Shooting(CreateCondtions(a, b, c));
         yield return null;
         yield return null;
         Assert.AreEqual(expected, testCount.Count);
+    }
+
+    NudgeParmeter[][] CreateCondtions(int a, int b, int c) 
+        => new NudgeParmeter[][] { new NudgeParmeter[] { new NudgeParmeter("A", a), new NudgeParmeter("B", b) }, new NudgeParmeter[] { new NudgeParmeter("C", c) } };
+
+    [UnityTest]
+    public IEnumerator 성공_실패_여부를_이밴트로_호출해야_함()
+    {
+        yield return 성공_실패_여부를_이밴트로_호출해야_함(false, a: 0);
+        yield return 성공_실패_여부를_이밴트로_호출해야_함(false, a: 1, b: 0);
+
+        yield return 성공_실패_여부를_이밴트로_호출해야_함(false, a: 1, b: 1, c: 0);
+        yield return 성공_실패_여부를_이밴트로_호출해야_함(true, a: 1, b: 1, c: 1);
+    }
+
+    public IEnumerator 성공_실패_여부를_이밴트로_호출해야_함(bool expected, int a = -1, int b = -1, int c = -1)
+    {
+        bool result = false;
+        var sut = CreateSut(new TestCount());
+        sut.OnShootingDone += isSuccess => result = isSuccess;
+
+        sut.Shooting(CreateCondtions(a, b, c));
+        yield return null;
+        yield return null;
+        Assert.AreEqual(expected, result);
     }
 
     public class TestCount
