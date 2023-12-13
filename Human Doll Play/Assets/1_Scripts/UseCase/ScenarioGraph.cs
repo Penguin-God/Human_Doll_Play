@@ -10,7 +10,7 @@ public class SinarioNode
     public bool IsSuccess { get; private set; } = false;
     public bool IsLast => _edgeByTarget == null || _edgeByTarget.Count() == 0;
 
-    public SinarioNode GetNextScenario(IEnumerable<NudgeParmeter> parmeters)
+    public SinarioNode GetNextScenario(IEnumerable<NudgeParameter> parmeters)
     {
         if (IsLast) return null;
 
@@ -22,10 +22,10 @@ public class SinarioNode
 
 public class SinarioEdge
 {
-    public SinarioEdge(IEnumerable<NudgeParmeter> parmeters) => _transtionCondtions = parmeters;
+    public SinarioEdge(IEnumerable<NudgeParameter> parmeters) => _transtionCondtions = parmeters;
 
-    IEnumerable<NudgeParmeter> _transtionCondtions = new List<NudgeParmeter>();
-    public bool CheckCondition(IEnumerable<NudgeParmeter> conditions) => _transtionCondtions.All(parm => conditions.Any(x => x.Name == parm.Name && x.Value == parm.Value));
+    IEnumerable<NudgeParameter> _transtionCondtions = new List<NudgeParameter>();
+    public bool CheckCondition(IEnumerable<NudgeParameter> conditions) => _transtionCondtions.All(parm => conditions.Any(x => x.Name == parm.Name && x.Value == parm.Value));
 }
 
 public readonly struct SinarioData
@@ -54,7 +54,7 @@ public class SinarioGraph
     }
     public void AddSianrio(SinarioNode node, IEnumerable<IAct> sinario) => _nodeBySinario.Add(node, sinario);
 
-    public SinarioData MoveNextSinario(IEnumerable<NudgeParmeter> nudgeParmeters)
+    public SinarioData MoveNextSinario(IEnumerable<NudgeParameter> nudgeParmeters)
     {
         _currentNode = _currentNode.GetNextScenario(nudgeParmeters);
         return new SinarioData(_nodeBySinario[_currentNode], _currentNode.IsLast, _currentNode.IsSuccess);

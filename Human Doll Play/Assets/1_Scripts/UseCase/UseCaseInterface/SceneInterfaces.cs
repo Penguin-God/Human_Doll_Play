@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 public interface ISceneEnvirment
 {
-    public void SetupEnvierment();
-    public int GetState();
+    public NudgeParameter ChangeEnvierment();
 }
 
 public interface IAct

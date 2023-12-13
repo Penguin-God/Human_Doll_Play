@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 
 public class SianrioNodeTests
 {
-    IEnumerable<NudgeParmeter> CraeteParms(int a = -1, int b = -1, int c = -1) => SinarioTestHelper.CreateParms(a, b, c);
+    IEnumerable<NudgeParameter> CraeteParms(int a = -1, int b = -1, int c = -1) => SinarioTestHelper.CreateParms(a, b, c);
 
     [Test]
     public void 조건에_부합하는_시나리오를_반환해야_함()

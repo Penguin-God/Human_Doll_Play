@@ -4,10 +4,10 @@ using UnityEngine;
 
 public static class SinarioTestHelper
 {
-    public static SinarioEdge CreateEdge(params NudgeParmeter[] parameters) => new SinarioEdge(parameters);
+    public static SinarioEdge CreateEdge(params NudgeParameter[] parameters) => new SinarioEdge(parameters);
 
-    public static IEnumerable<NudgeParmeter> CreateParms(int a = -1, int b = -1, int c = -1)
-        => new NudgeParmeter[] { new NudgeParmeter("A", a), new NudgeParmeter("B", b), new NudgeParmeter("C", c) };
+    public static IEnumerable<NudgeParameter> CreateParms(int a = -1, int b = -1, int c = -1)
+        => new NudgeParameter[] { new NudgeParameter("A", a), new NudgeParameter("B", b), new NudgeParameter("C", c) };
 
     public static SinarioNode[] CreateSixNodeTree()
     {
@@ -18,11 +18,11 @@ public static class SinarioTestHelper
         SinarioNode sinarioNode5 = new ();
         SinarioNode sinarioNode6 = SinarioNode.CreateSuccessNode();
 
-        var sinarioEdge1 = CreateEdge(new NudgeParmeter("A", 0));
-        var sinarioEdge2 = CreateEdge(new NudgeParmeter("A", 1), new NudgeParmeter("B", 0));
-        var sinarioEdge3 = CreateEdge(new NudgeParmeter("A", 1), new NudgeParmeter("B", 1));
-        var sinarioEdge4 = CreateEdge(new NudgeParmeter("C", 0));
-        var sinarioEdge5 = CreateEdge(new NudgeParmeter("C", 1));
+        var sinarioEdge1 = CreateEdge(new NudgeParameter("A", 0));
+        var sinarioEdge2 = CreateEdge(new NudgeParameter("A", 1), new NudgeParameter("B", 0));
+        var sinarioEdge3 = CreateEdge(new NudgeParameter("A", 1), new NudgeParameter("B", 1));
+        var sinarioEdge4 = CreateEdge(new NudgeParameter("C", 0));
+        var sinarioEdge5 = CreateEdge(new NudgeParameter("C", 1));
 
         startNode.AddTranstion(sinarioEdge1, sinarioNode2);
         startNode.AddTranstion(sinarioEdge2, sinarioNode3);

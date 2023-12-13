@@ -6,15 +6,15 @@ using UnityEngine.TestTools;
 
 public class SinarioEdgeTests
 {
-    IEnumerable<NudgeParmeter> CreateParms(int a, int b) => new NudgeParmeter[] {new NudgeParmeter("A", a), new NudgeParmeter("B", b)};
-    SinarioEdge CreateSut(IEnumerable<NudgeParmeter> parms) => new(parms);
+    IEnumerable<NudgeParameter> CreateParms(int a, int b) => new NudgeParameter[] {new NudgeParameter("A", a), new NudgeParameter("B", b)};
+    SinarioEdge CreateSut(IEnumerable<NudgeParameter> parms) => new(parms);
 
     [Test]
     [TestCase(0, false)]
     [TestCase(1, true)]
     public void 조건이_하나면_그게_맞아야_참을_반환해야_함(int value, bool expected)
     {
-        var sut = CreateSut(new NudgeParmeter[] { new NudgeParmeter("A", value) });
+        var sut = CreateSut(new NudgeParameter[] { new NudgeParameter("A", value) });
         var result = sut.CheckCondition(CreateParms(1, 0));
 
         Assert.AreEqual(expected, result);
