@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ActivePersenter : MonoBehaviour, ISceneEnvirment
 {
-    public void ChangeEnvierment()
+    public void ChangeEnvierment(int value)
     {
-        gameObject.SetActive(!gameObject.activeSelf);
+        if (value == 0) gameObject.SetActive(false);
+        else if(value == 1 ) gameObject.SetActive(true);
     }
 }

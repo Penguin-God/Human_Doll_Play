@@ -4807,7 +4807,6 @@ MonoBehaviour:
   characterMover: {fileID: 1822308471}
   dialogue: {fileID: 1460958941}
   secnarioDirector: {fileID: 1445997980}
-  actDatas1: {fileID: 11400000, guid: 911a57eb21b3df84791cef63f76d7937, type: 2}
   actDatas:
   - {fileID: 11400000, guid: 08e3cab00d667e243a85880a5818cfe7, type: 2}
   - {fileID: 11400000, guid: fc3aa2e27b482d948ac6359ada8f98e6, type: 2}
@@ -5184,7 +5183,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21301718, guid: 31e24ed712cbf3b4595a8dbc9b18aa9c, type: 3}
+  m_Sprite: {fileID: -9054047356014157933, guid: 26d435702dedb784694895af12418eff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

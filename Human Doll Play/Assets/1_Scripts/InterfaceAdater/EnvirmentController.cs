@@ -16,7 +16,7 @@ public class NudgeEnvierment
     public void ChangeEnvirment(int value)
     {
         NudgeParameter.ChangeValue(value);
-        SceneEnvirment.ChangeEnvierment();
+        SceneEnvirment.ChangeEnvierment(value);
     }
 
     public bool SameParameter(string name) => NudgeParameter.Name == name;

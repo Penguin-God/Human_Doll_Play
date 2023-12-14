@@ -12,13 +12,9 @@ public class SpritePresenter : MonoBehaviour, ISceneEnvirment
     }
 
     SpriteRenderer _spriteRenderer;
-    int _spriteIndex;
-    
-    public void ChangeEnvierment()
+    public void ChangeEnvierment(int value)
     {
-        _spriteIndex++;
-        if (_spriteIndex >= _sprites.Length) _spriteIndex = 0;
-
-        _spriteRenderer.sprite = _sprites[_spriteIndex];
+        if (value >= 0 && value < _sprites.Length) 
+            _spriteRenderer.sprite = _sprites[value];
     }
 }
