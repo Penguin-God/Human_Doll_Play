@@ -35,11 +35,11 @@ MonoBehaviour:
     moveDatas:
     - moveDir: 1
       moveCount: 1
-    - moveDir: 3
+    - moveDir: 2
       moveCount: 11
     - moveDir: 0
       moveCount: 3
-    - moveDir: 3
+    - moveDir: 2
       moveCount: 1
     dialogue: []
     rotateDir: 0

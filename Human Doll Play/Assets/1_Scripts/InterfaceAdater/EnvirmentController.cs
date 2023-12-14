@@ -4,7 +4,7 @@ using System.Linq;
 
 public class NudgeEnvierment
 {
-    readonly NudgeParameter NudgeParameter;
+    public readonly NudgeParameter NudgeParameter;
     readonly ISceneEnvirment SceneEnvirment;
 
     public NudgeEnvierment(string parameterName, ISceneEnvirment sceneEnvirment)
@@ -25,6 +25,7 @@ public class NudgeEnvierment
 public class EnvirmentController
 {
     HashSet<NudgeEnvierment> _nudgeEnvierments;
+    public IEnumerable<NudgeParameter> NudgeParameters => _nudgeEnvierments.Select(x => x.NudgeParameter);
     public EnvirmentController(IEnumerable<NudgeEnvierment> nudgeEnvierments) => _nudgeEnvierments = new(nudgeEnvierments);
 
     public void ChangeEnvirment(string parameterName, int value)

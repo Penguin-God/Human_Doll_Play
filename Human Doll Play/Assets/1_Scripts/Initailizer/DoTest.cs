@@ -8,18 +8,20 @@ public class DoTest : MonoBehaviour
     [SerializeField] CharacterMover characterMover;
     [SerializeField] UI_Dialogue dialogue;
     [SerializeField] ShootingDiractor secnarioDirector;
-    [SerializeField] ActDatas actDatas1;
     [SerializeField] ActDatas[] actDatas;
     EnvirmentController _envirmentController;
 
     [SerializeField] SpritePresenter curtain;
+    [SerializeField] ActivePersenter activePersenter1;
+    [SerializeField] ActivePersenter activePersenter2;
     void Start()
     {
         characterMover.DependencyInject(new GridMoveUseCase(GameSettings.TileSize), 5);
         var envirment1 = new NudgeEnvierment("A", curtain);
-        var envirment2 = new NudgeEnvierment("B", null);
-        var envirment3 = new NudgeEnvierment("C", null);
+        var envirment2 = new NudgeEnvierment("B", activePersenter1);
+        var envirment3 = new NudgeEnvierment("C", activePersenter2);
         _envirmentController = new EnvirmentController(new NudgeEnvierment[] { envirment1, envirment2, envirment3 });
+
     }
 
     void Update()
@@ -34,7 +36,7 @@ public class DoTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             secnarioDirector.SetGrahp(CreateFiveSinarioGraph(CreateActss()));
-            // secnarioDirector.Shooting(_envirmentController.NudgeParameters);
+            secnarioDirector.Shooting(_envirmentController.NudgeParameters);
         }
     }
 
@@ -62,14 +64,14 @@ public class DoTest : MonoBehaviour
 
     public static SinarioEdge CreateEdge(params NudgeParameter[] parameters) => new SinarioEdge(parameters);
 
-    static NudgeParameter CreateParameter(string name, int value)
+    NudgeParameter CreateParameter(string name, int value)
     {
         NudgeParameter result = new(name);
         result.ChangeValue(value);
         return result;
     }
 
-    public static SinarioNode[] CreateSixNodeTree()
+    public SinarioNode[] CreateSixNodeTree()
     {
         SinarioNode startNode = new();
         SinarioNode sinarioNode2 = new();
@@ -93,7 +95,7 @@ public class DoTest : MonoBehaviour
         return new SinarioNode[] { startNode, sinarioNode2, sinarioNode3, sinarioNode4, sinarioNode5, sinarioNode6 };
     }
 
-    public static SinarioGraph CreateFiveSinarioGraph(IEnumerable<IAct>[] sinarios)
+    public SinarioGraph CreateFiveSinarioGraph(IEnumerable<IAct>[] sinarios)
     {
         var nodeTree = CreateSixNodeTree();
         var startNode = nodeTree[0];

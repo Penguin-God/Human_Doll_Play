@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public interface ISceneEnvirment
 {
-    public int ChangeEnvierment();
+    public void ChangeEnvierment();
 }
 
 public interface IAct

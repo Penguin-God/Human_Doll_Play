@@ -30,7 +30,7 @@ MonoBehaviour:
     clip: {fileID: 0}
   - selectedAction: 0
     moveDatas:
-    - moveDir: 2
+    - moveDir: 3
       moveCount: 1
     dialogue: []
     rotateDir: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
     moveDatas:
     - moveDir: 1
       moveCount: 3
-    - moveDir: 2
+    - moveDir: 3
       moveCount: 11
     - moveDir: 0
       moveCount: 1
