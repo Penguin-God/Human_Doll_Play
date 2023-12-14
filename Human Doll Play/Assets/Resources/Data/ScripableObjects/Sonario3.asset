@@ -28,6 +28,9 @@ MonoBehaviour:
     - "\uC544. \uBE5B..."
     rotateDir: 0
     clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0
   - selectedAction: 0
     moveDatas:
     - moveDir: 3
@@ -35,14 +38,37 @@ MonoBehaviour:
     dialogue: []
     rotateDir: 0
     clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0
   - selectedAction: 1
     moveDatas: []
     dialogue:
     - "\uC774 \uB9DD\uD560 \uCEE4\uD2BC\uC740 \uC65C \uC5F4\uC5B4\uB454\uAC74\uC9C0."
-    - "\uBC30\uACE0\uD508\uB370 \uBC25\uC774\uB098 \uBA39\uC744\uAE4C"
-    - "\uBD84\uBA85 \uC2DD\uB2F9\uC5D0 \uBA39\uC744\uAC8C \uC788\uC744\uD150\uB370"
     rotateDir: 0
     clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0
+  - selectedAction: 4
+    moveDatas: []
+    dialogue: []
+    rotateDir: 0
+    clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0
+  - selectedAction: 1
+    moveDatas: []
+    dialogue:
+    - "\uC544... \uAD1C\uD788 \uC77C\uC5B4\uB098\uB2C8\uAE4C \uBC30\uACE0\uD504\uB124"
+    - "\uBD84\uBA85 \uC2DD\uD0C1\uC5D0 \uC5B4\uC81C \uBA39\uB2E4 \uB0A8\uC740 \uBC84\uC12F\uC774
+      \uC788\uC744\uD150\uB370"
+    rotateDir: 0
+    clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0
   - selectedAction: 0
     moveDatas:
     - moveDir: 1
@@ -54,3 +80,6 @@ MonoBehaviour:
     dialogue: []
     rotateDir: 0
     clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0

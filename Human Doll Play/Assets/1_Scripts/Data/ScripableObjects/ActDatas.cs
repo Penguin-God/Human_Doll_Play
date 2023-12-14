@@ -11,6 +11,7 @@ public enum ActionEnum
     Dialogue,
     Rotate,
     Sound,
+    Envirment,
 }
 
 [Serializable]
@@ -19,6 +20,15 @@ public class MoveData
     [EnumToggleButtons]
     public Direction moveDir;
     public int moveCount = 1;
+}
+
+[Serializable]
+public class EnvirmentInteractionData
+{
+    [SerializeField] GameObject _interactionObject;
+    [SerializeField] int value;
+
+    public IAct CreateInteractionActor() => new EnvirmentInteractionActor(_interactionObject.GetComponent<ISceneEnvirment>(), value);
 }
 
 [Serializable]
@@ -40,6 +50,9 @@ public class ActData
 
     [SerializeField, ShowIf("selectedAction", ActionEnum.Sound)]
     public AudioClip clip;
+
+    [SerializeField, ShowIf("selectedAction", ActionEnum.Envirment)]
+    public EnvirmentInteractionData _envirmentInteractionData;
 }
 
 [CreateAssetMenu(fileName = "ActDatas", menuName = "ScripableOject/ActDatas")]

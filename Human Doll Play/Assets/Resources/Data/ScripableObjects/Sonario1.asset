@@ -29,6 +29,9 @@ MonoBehaviour:
     dialogue: []
     rotateDir: 0
     clip: {fileID: 8300000, guid: a235d590ef2a04d1b85b61ef4c21337c, type: 3}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0
   - selectedAction: 1
     moveDatas: []
     dialogue:
@@ -36,3 +39,6 @@ MonoBehaviour:
     - "\uC878\uB824... \uADF8\uB0E5 \uC790\uC57C\uC9C0..."
     rotateDir: 0
     clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0
