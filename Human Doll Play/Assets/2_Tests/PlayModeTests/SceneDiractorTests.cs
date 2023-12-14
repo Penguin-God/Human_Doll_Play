@@ -43,7 +43,7 @@ public class SceneDiractorTests
         Object.Destroy(sut.gameObject);
     }
 
-    NudgeParameter[] CreateCondtions(int a, int b, int c) => new NudgeParameter[] { new NudgeParameter("A", a), new NudgeParameter("B", b), new NudgeParameter("C", c) };
+    IEnumerable<NudgeParameter> CreateCondtions(int a, int b, int c) => SinarioTestHelper.CreateParms(a, b, c);
 
     [UnityTest]
     public IEnumerator 성공_실패_여부를_이밴트로_호출해야_함()
