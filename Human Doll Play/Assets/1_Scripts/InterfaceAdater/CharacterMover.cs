@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMover : MonoBehaviour
+public class CharacterMover : ObjectMover
 {
-    GridMoveUseCase _gridMoveUseCase;
-    float _speed; // 초당 움직이는 거리
     Animator _animator;
-    public void DependencyInject(GridMoveUseCase gridMoveUseCase, float speed)
+
+    void Awake()
     {
-        _gridMoveUseCase = gridMoveUseCase;
-        _speed = speed;
         _animator = GetComponent<Animator>();
     }
 
@@ -33,18 +30,10 @@ public class CharacterMover : MonoBehaviour
         _animator.SetFloat("DirY", dir.y);
     }
 
-    public IEnumerator Co_Move(MoveEntity moveEntity)
+    public override IEnumerator Co_Move(MoveEntity moveEntity)
     {
         PlayWalkAnima(moveEntity.Direction);
-
-        Vector2 destination = _gridMoveUseCase.CalculateDestination(moveEntity, transform.position);
-        while (Vector2.Distance(transform.position, destination) > Mathf.Epsilon)
-        {
-            // 선형 보간. 거리가 이동할 크기보다 작으면 목적지 반환.
-            transform.position = Vector2.MoveTowards(transform.position, destination, _speed * Time.deltaTime);
-            yield return null;
-        }
-
+        yield return base.Co_Move(moveEntity);
         PlayIdleAnima(moveEntity.Direction);
     }
 

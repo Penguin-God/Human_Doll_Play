@@ -6,30 +6,33 @@ using UnityEngine.TestTools;
 
 public class CharacterMoverTests
 {
-    CharacterMover CreateSut(float speed)
+    CharacterMover CreateSut()
     {
-        var result = new GameObject().AddComponent<CharacterMover>();
-        result.gameObject.AddComponent<Animator>();
-        result.DependencyInject(new GridMoveUseCase(1), speed);
+        var gameObj = new GameObject();
+        var animator = gameObj.AddComponent<Animator>();
+        animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Character/CharacterController");
+
+        var result = gameObj.AddComponent<CharacterMover>();
+        result.DependencyInject(new GridMoveUseCase(1));
         return result;
     }
 
     void Move(CharacterMover mover, IEnumerable<MoveEntity> dirs)
     {
-        mover.StartCoroutine(new CharacterMoveActor(mover, dirs).Execute());
+        mover.StartCoroutine(new ObjectMoveActor(mover, dirs).Execute());
     }
 
-    MoveEntity CreateEntity(Direction dir, int count = 1) => new MoveEntity(dir, count);
+    MoveEntity CreateEntity(Direction dir, float speed, int count) => new MoveEntity(dir, speed, count);
 
     [UnityTest]
     public IEnumerator 경로에_따라_움직여야_함()
     {
         // Arrange
-        var sut = CreateSut(50);
+        var sut = CreateSut();
         sut.transform.position = Vector2.zero;
 
         // Act
-        Move(sut, new MoveEntity[] { CreateEntity(Direction.Right, 1), CreateEntity(Direction.Up, 2) });
+        Move(sut, new MoveEntity[] { CreateEntity(Direction.Right, 50, 1), CreateEntity(Direction.Up, 50, 2) });
         yield return new WaitForSeconds(0.1f); // 이동 시간 대기
 
         // Assert
@@ -50,12 +53,12 @@ public class CharacterMoverTests
     IEnumerator 경로에_따라_애니메이션을_주어야_함(Direction direction, float x, float y)
     {
         // Arrange
-        var sut = CreateSut(1000);
+        var sut = CreateSut();
         var animator = sut.GetComponent<Animator>();
-        animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Character/CharacterController");
+
 
         // Act
-        Move(sut, new MoveEntity[] { CreateEntity(direction, 1) });
+        Move(sut, new MoveEntity[] { CreateEntity(direction, 1000, 1) });
 
         // Assert
         Assert.IsTrue(animator.GetBool("IsWalk"));
@@ -79,7 +82,9 @@ public class CharacterMoverTests
 
     public IEnumerator 경로에_따라_회전을_해야_함(Direction direction, float x, float y)
     {
-        var sut = CreateSut(0);
+        var sut = CreateSut();
+        yield return null;
+        yield return null;
         var animator = sut.GetComponent<Animator>();
         animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Character/CharacterController");
 

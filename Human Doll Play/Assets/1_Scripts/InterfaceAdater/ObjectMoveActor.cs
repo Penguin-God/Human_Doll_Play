@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMoveActor : IAct
+public class ObjectMoveActor : IAct
 {
-    readonly CharacterMover _mover;
+    readonly ObjectMover _mover;
     readonly IEnumerable<MoveEntity> _moves;
-    public CharacterMoveActor(CharacterMover mover, IEnumerable<MoveEntity> dirs)
+    public ObjectMoveActor(ObjectMover mover, IEnumerable<MoveEntity> dirs)
     {
         _mover = mover;
         _moves = dirs;
