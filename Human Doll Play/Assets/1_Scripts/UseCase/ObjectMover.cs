@@ -5,10 +5,14 @@ using UnityEngine;
 public class ObjectMover : MonoBehaviour
 {
     protected GridMoveUseCase _gridMoveUseCase;
-    public void DependencyInject(GridMoveUseCase gridMoveUseCase) => _gridMoveUseCase = gridMoveUseCase;
+    public void DependencyInject(GridMoveUseCase gridMoveUseCase) //=> _gridMoveUseCase = gridMoveUseCase;
+    {
+        _gridMoveUseCase = gridMoveUseCase;
+    }
 
     public virtual IEnumerator Co_Move(MoveEntity moveEntity)
     {
+        print(_gridMoveUseCase);
         Vector2 destination = _gridMoveUseCase.CalculateDestination(moveEntity, transform.position);
         while (Vector2.Distance(transform.position, destination) > Mathf.Epsilon)
         {

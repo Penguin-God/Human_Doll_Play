@@ -16,7 +16,7 @@ public class DoTest : MonoBehaviour
     [SerializeField] ActivePersenter activePersenter2;
     void Start()
     {
-        characterMover.DependencyInject(new GridMoveUseCase(GameSettings.TileSize), 5);
+        characterMover.DependencyInject(new GridMoveUseCase(GameSettings.TileSize));
         var envirment1 = new NudgeEnvierment("A", curtain);
         var envirment2 = new NudgeEnvierment("B", activePersenter1);
         var envirment3 = new NudgeEnvierment("C", activePersenter2);
@@ -35,33 +35,33 @@ public class DoTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            secnarioDirector.SetGrahp(CreateFiveSinarioGraph(CreateActss()));
+            secnarioDirector.SetGrahp(CreateFiveSinarioGraph(CreateSinarioDatas()));
             secnarioDirector.Shooting(_envirmentController.NudgeParameters);
         }
     }
 
-    IEnumerable<IAct>[] CreateActss()
-    {
-        List<IEnumerable<IAct>> result = new();
-        foreach (ActDatas data in actDatas)
-            result.Add(CreateActs(data));
-        return result.ToArray();
-    }
+    IEnumerable<IAct>[] CreateSinarioDatas() => actDatas.Select(x => x.CreateSinarioData()).ToArray();
+    //{
+    //    List<IEnumerable<IAct>> result = new();
+    //    foreach (ActDatas data in actDatas)
+    //        result.Add(CreateActs(data));
+    //    return result.ToArray();
+    //}
 
-    IEnumerable<IAct> CreateActs(ActDatas actDatas) => actDatas.actDatas.Select(x => CreateAct(x));
+    //IEnumerable<IAct> CreateActs(ActDatas actDatas) => actDatas.actDatas.Select(x => CreateAct(x));
 
-    IAct CreateAct(ActData actData)
-    {
-        switch (actData.selectedAction)
-        {
-            case ActionEnum.Move: return new CharacterMoveActor(characterMover, actData.MoveEntities);
-            case ActionEnum.Rotate: return new CharacterRotator(characterMover, actData.rotateDir);
-            case ActionEnum.Dialogue: return new Dialoguer(actData.dialogue, dialogue, dialogue);
-            case ActionEnum.Sound: return new SoundActor(actData.clip);
-            case ActionEnum.Envirment: return actData._envirmentInteractionData.CreateInteractionActor();
-            default: return null;
-        }
-    }
+    //IAct CreateAct(ActData actData)
+    //{
+    //    switch (actData.selectedAction)
+    //    {
+    //        case ActionEnum.Move: return new ObjectMoveActor(characterMover, actData.MoveEntities);
+    //        case ActionEnum.Rotate: return new CharacterRotator(characterMover, actData.rotateDir);
+    //        case ActionEnum.Dialogue: return new Dialoguer(actData.dialogue, dialogue, dialogue);
+    //        case ActionEnum.Sound: return new SoundActor(actData._clip);
+    //        case ActionEnum.Envirment: return actData._envirmentInteractionData.CreateInteractionActor();
+    //        default: return null;
+    //    }
+    //}
 
     public static SinarioEdge CreateEdge(params NudgeParameter[] parameters) => new SinarioEdge(parameters);
 

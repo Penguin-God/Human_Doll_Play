@@ -21,23 +21,44 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  actDatas:
-  - selectedAction: 1
-    moveDatas: []
-    dialogue:
-    - "\uC9C4\uC9DC \uB300\uCCB4 \uC65C \uCEE4\uD2BC\uC774 \uB2E4 \uC5F4\uB824\uC788\uB294
-      \uAC70\uC57C."
-    - "\uC774\uAC74 \uC0C1\uD574\uC11C \uBABB\uBA39\uACA0\uAD70"
-    - "\uC774\uB7EC\uBA74 \uBC16\uC5D0 \uB098\uAC00\uC11C \uC74C\uC2DD\uC744 \uC0AC\uC57C\uB418\uB294\uB370"
-    - "\uADC0\uCC2E\uC544..."
-    rotateDir: 0
-    clip: {fileID: 0}
-  - selectedAction: 0
-    moveDatas:
-    - moveDir: 2
-      moveCount: 1
-    - moveDir: 1
-      moveCount: 10
-    dialogue: []
-    rotateDir: 0
-    clip: {fileID: 0}
+  _actDatas:
+  - _selectedAction: 2
+    _moveData:
+      _mover: {fileID: 0}
+      _speed: 5
+      _moveDatas: []
+    _characterRotateData:
+      _character: {fileID: 0}
+      _direction: 0
+    _dialogueData:
+      dialogue:
+      - "\uC5EC\uAE30\uB3C4 \uCEE4\uD2BC\uC774 \uC5F4\uB824\uC788\uB124"
+      - "\uB09C \uB300\uCCB4 \uC5B4\uC81C \uBB58\uD55C\uAC70\uC57C"
+      - "\uC774\uB7EC\uBA74 \uBC16\uC5D0\uC11C \uBB58 \uC0AC\uC57C\uB418\uB294\uB370"
+      - "\uC544... \uADC0\uCC2E\uC544"
+      _dialoger: {fileID: 0}
+      _waiter: {fileID: 0}
+    _clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0
+  - _selectedAction: 0
+    _moveData:
+      _mover: {fileID: 0}
+      _speed: 5
+      _moveDatas:
+      - moveDir: 2
+        moveCount: 2
+      - moveDir: 1
+        moveCount: 13
+    _characterRotateData:
+      _character: {fileID: 0}
+      _direction: 0
+    _dialogueData:
+      dialogue: []
+      _dialoger: {fileID: 0}
+      _waiter: {fileID: 0}
+    _clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0

@@ -8,8 +8,8 @@ using System.Linq;
 public enum ActionEnum
 {
     Move,
-    Dialogue,
     Rotate,
+    Dialogue,
     Sound,
     Envirment,
 }
@@ -17,9 +17,38 @@ public enum ActionEnum
 [Serializable]
 public class MoveData
 {
-    [EnumToggleButtons]
+    [SerializeField] GameObject _mover;
+    [SerializeField] float _speed = 5;
+    [SerializeField] MoveEntityData[] _moveDatas;
+
+    public IAct CreateMoveActor() => new ObjectMoveActor(_mover.GetComponent<ObjectMover>(), _moveDatas.Select(x => new MoveEntity(x.moveDir, _speed, x.moveCount)));
+}
+
+[Serializable]
+public class MoveEntityData
+{
+    [EnumToggleButtons, SerializeField]
     public Direction moveDir;
-    public int moveCount = 1;
+    [SerializeField] public int moveCount = 1;
+}
+
+[Serializable]
+public class CharacterRotateData
+{
+    [SerializeField] GameObject _character;
+    [SerializeField, EnumToggleButtons] Direction _direction;
+
+    public IAct CreateRotateActor() => new CharacterRotator(_character.GetComponent<CharacterMover>(), _direction);
+}
+
+[Serializable]
+public class DialogeData
+{
+    [SerializeField, TextArea] string[] dialogue;
+    [SerializeField] GameObject _dialoger;
+    [SerializeField] GameObject _waiter; 
+
+    public IAct CreateDialoger() => new Dialoguer(dialogue, _dialoger.GetComponent<IDialoguer>(), _waiter.GetComponent<IYieldNextLine>());
 }
 
 [Serializable]
@@ -35,28 +64,41 @@ public class EnvirmentInteractionData
 public class ActData
 {
     [SerializeField, EnumToggleButtons]
-    public ActionEnum selectedAction;
+    ActionEnum _selectedAction;
 
-    [SerializeField, ShowIf("selectedAction", ActionEnum.Move)]
-    MoveData[] moveDatas;
+    [SerializeField, ShowIf(nameof(_selectedAction), ActionEnum.Move)]
+    MoveData _moveData;
 
-    public IEnumerable<MoveEntity> MoveEntities => moveDatas.Select(x => new MoveEntity(x.moveDir, x.moveCount));
+    [SerializeField, ShowIf(nameof(_selectedAction), ActionEnum.Rotate), EnumToggleButtons]
+    CharacterRotateData _characterRotateData;
 
-    [SerializeField, ShowIf("selectedAction", ActionEnum.Dialogue), TextArea]
-    public string[] dialogue;
+    [SerializeField, ShowIf(nameof(_selectedAction), ActionEnum.Dialogue)]
+    DialogeData _dialogueData;
 
-    [SerializeField, ShowIf("selectedAction", ActionEnum.Rotate), EnumToggleButtons]
-    public Direction rotateDir;
+    [SerializeField, ShowIf(nameof(_selectedAction), ActionEnum.Sound)]
+    AudioClip _clip;
 
-    [SerializeField, ShowIf("selectedAction", ActionEnum.Sound)]
-    public AudioClip clip;
+    [SerializeField, ShowIf(nameof(_selectedAction), ActionEnum.Envirment)]
+    EnvirmentInteractionData _envirmentInteractionData;
 
-    [SerializeField, ShowIf("selectedAction", ActionEnum.Envirment)]
-    public EnvirmentInteractionData _envirmentInteractionData;
+    public IAct CreateAct()
+    {
+        switch (_selectedAction)
+        {
+            case ActionEnum.Move: return _moveData.CreateMoveActor();
+            case ActionEnum.Rotate: return _characterRotateData.CreateRotateActor();
+            case ActionEnum.Dialogue: return _dialogueData.CreateDialoger();
+            case ActionEnum.Sound: return new SoundActor(_clip);
+            case ActionEnum.Envirment: return _envirmentInteractionData.CreateInteractionActor();
+            default: return null;
+        }
+    }
 }
 
 [CreateAssetMenu(fileName = "ActDatas", menuName = "ScripableOject/ActDatas")]
 public class ActDatas : SerializedScriptableObject
 {
-    [SerializeField] public ActData[] actDatas;
+    [SerializeField] ActData[] _actDatas;
+
+    public IEnumerable<IAct> CreateSinarioData() => _actDatas.Select(x => x.CreateAct());
 }

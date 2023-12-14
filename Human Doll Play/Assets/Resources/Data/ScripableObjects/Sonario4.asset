@@ -21,31 +21,63 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  actDatas:
-  - selectedAction: 1
-    moveDatas: []
-    dialogue:
-    - "\uC74C. \uC5EC\uAE30\uB294 \uCEE4\uD2BC\uC744 \uC798 \uCCD0\uB1A8\uAD70."
-    - "\uD558\uB9C8\uD0C0\uBA74 \uD587\uBE5B \uB54C\uBB38\uC5D0 \uC0C1\uD560\uBED4\uD588\uC5B4"
-    - "\uBA39\uC73C\uB2C8\uAE4C \uC878\uB9AC\uB124"
-    - "\uADF8\uB0E5 \uC790\uC790"
-    rotateDir: 0
-    clip: {fileID: 0}
-  - selectedAction: 0
-    moveDatas:
-    - moveDir: 1
-      moveCount: 1
-    - moveDir: 2
-      moveCount: 11
-    - moveDir: 0
-      moveCount: 3
-    - moveDir: 2
-      moveCount: 1
-    dialogue: []
-    rotateDir: 0
-    clip: {fileID: 0}
-  - selectedAction: 2
-    moveDatas: []
-    dialogue: []
-    rotateDir: 0
-    clip: {fileID: 0}
+  _actDatas:
+  - _selectedAction: 2
+    _moveData:
+      _mover: {fileID: 0}
+      _speed: 5
+      _moveDatas: []
+    _characterRotateData:
+      _character: {fileID: 0}
+      _direction: 0
+    _dialogueData:
+      dialogue:
+      - "\uC74C. \uC5EC\uAE30\uB294 \uCEE4\uD2BC\uC774 \uC798 \uB2EB\uD600 \uC788\uAD70"
+      - "\uB2E4 \uBA39\uC73C\uB2C8\uAE4C \uB2E4\uC2DC \uC878\uB9AC\uB124"
+      - "\uC790\uC57C\uACA0\uB2E4"
+      _dialoger: {fileID: 0}
+      _waiter: {fileID: 0}
+    _clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0
+  - _selectedAction: 0
+    _moveData:
+      _mover: {fileID: 0}
+      _speed: 5
+      _moveDatas:
+      - moveDir: 1
+        moveCount: 2
+      - moveDir: 2
+        moveCount: 12
+      - moveDir: 0
+        moveCount: 4
+      - moveDir: 2
+        moveCount: 1
+    _characterRotateData:
+      _character: {fileID: 0}
+      _direction: 0
+    _dialogueData:
+      dialogue: []
+      _dialoger: {fileID: 0}
+      _waiter: {fileID: 0}
+    _clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0
+  - _selectedAction: 1
+    _moveData:
+      _mover: {fileID: 0}
+      _speed: 5
+      _moveDatas: []
+    _characterRotateData:
+      _character: {fileID: 0}
+      _direction: 1
+    _dialogueData:
+      dialogue: []
+      _dialoger: {fileID: 0}
+      _waiter: {fileID: 0}
+    _clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0

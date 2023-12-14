@@ -21,11 +21,22 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  actDatas:
-  - selectedAction: 1
-    moveDatas: []
-    dialogue:
-    - "\uC544\uCE68.... \uC778\uAC00?"
-    - "\uBAB0\uB77C \uADF8\uB0E5 \uC790\uC57C\uC9C0"
-    rotateDir: 0
-    clip: {fileID: 0}
+  _actDatas:
+  - _selectedAction: 2
+    _moveData:
+      _mover: {fileID: 0}
+      _speed: 5
+      _moveDatas: []
+    _characterRotateData:
+      _character: {fileID: 0}
+      _direction: 0
+    _dialogueData:
+      dialogue:
+      - "\uC544\uCE68\uC778\uAC00..."
+      - "\uBAB0\uB77C \uADF8\uB0E5 \uC790\uC57C\uC9C0..."
+      _dialoger: {fileID: 0}
+      _waiter: {fileID: 0}
+    _clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0
