@@ -15,7 +15,10 @@ public class CharacterStateTests
     [TestCase(-200, 0)]
     public void 행복도가_범위_내에서_변해야_함(int amount, int expected)
     {
-        int result = CreateSut().ChangeHappier(amount);
-        Assert.AreEqual(expected, result);
+        var sut = CreateSut();
+
+        sut.ChangeHappier(amount);
+
+        Assert.AreEqual(expected, sut.Happiness);
     }
 }

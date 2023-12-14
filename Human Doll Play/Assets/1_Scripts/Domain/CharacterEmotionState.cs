@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class CharacterEmotionState
 {
-    int _happiness;
+    public int Happiness { get; private set; }
     const int MinHappiness = 0;
     const int MaxHappiness = 100;
 
-    public CharacterEmotionState(int happiness) => _happiness = happiness;
+    public CharacterEmotionState(int happiness) => Happiness = happiness;
 
-    public int ChangeHappier(int amount)
-    {
-        _happiness += amount;
-        ClampHappiness();
-        return _happiness;
-    }
+    public void ChangeHappier(int amount) => ClampHappiness(Happiness + amount);
 
-    int ClampHappiness() => _happiness = Mathf.Clamp(_happiness, MinHappiness, MaxHappiness);
+    void ClampHappiness(int newHappiness) => Happiness = Mathf.Clamp(newHappiness, MinHappiness, MaxHappiness);
 }
