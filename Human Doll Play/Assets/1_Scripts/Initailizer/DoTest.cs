@@ -16,12 +16,20 @@ public class DoTest : MonoBehaviour
     void Start()
     {
         characterMover.DependencyInject(new GridMoveUseCase(GameSettings.TileSize), 5);
-        _envirmentController = new EnvirmentController(new ISceneEnvirment[] { curtain });
+        var envirment1 = new NudgeEnvierment("A", curtain);
+        var envirment2 = new NudgeEnvierment("B", null);
+        var envirment3 = new NudgeEnvierment("C", null);
+        _envirmentController = new EnvirmentController(new NudgeEnvierment[] { envirment1, envirment2, envirment3 });
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) _envirmentController.ChangeEnvirment(curtain);
+        if (Input.GetKeyDown(KeyCode.Alpha1)) _envirmentController.ChangeEnvirment("A", 0);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) _envirmentController.ChangeEnvirment("A", 1);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) _envirmentController.ChangeEnvirment("B", 0);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) _envirmentController.ChangeEnvirment("B", 1);
+        if (Input.GetKeyDown(KeyCode.Alpha5)) _envirmentController.ChangeEnvirment("C", 0);
+        if (Input.GetKeyDown(KeyCode.Alpha6)) _envirmentController.ChangeEnvirment("C", 1);
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -54,6 +62,13 @@ public class DoTest : MonoBehaviour
 
     public static SinarioEdge CreateEdge(params NudgeParameter[] parameters) => new SinarioEdge(parameters);
 
+    static NudgeParameter CreateParameter(string name, int value)
+    {
+        NudgeParameter result = new(name);
+        result.ChangeValue(value);
+        return result;
+    }
+
     public static SinarioNode[] CreateSixNodeTree()
     {
         SinarioNode startNode = new();
@@ -63,11 +78,11 @@ public class DoTest : MonoBehaviour
         SinarioNode sinarioNode5 = new();
         SinarioNode sinarioNode6 = SinarioNode.CreateSuccessNode();
 
-        var sinarioEdge1 = CreateEdge(new NudgeParameter("A", 0));
-        var sinarioEdge2 = CreateEdge(new NudgeParameter("A", 1), new NudgeParameter("B", 0));
-        var sinarioEdge3 = CreateEdge(new NudgeParameter("A", 1), new NudgeParameter("B", 1));
-        var sinarioEdge4 = CreateEdge(new NudgeParameter("C", 0));
-        var sinarioEdge5 = CreateEdge(new NudgeParameter("C", 1));
+        var sinarioEdge1 = CreateEdge(CreateParameter("A", 0));
+        var sinarioEdge2 = CreateEdge(CreateParameter("A", 1), CreateParameter("B", 0));
+        var sinarioEdge3 = CreateEdge(CreateParameter("A", 1), CreateParameter("B", 1));
+        var sinarioEdge4 = CreateEdge(CreateParameter("C", 0));
+        var sinarioEdge5 = CreateEdge(CreateParameter("C", 1));
 
         startNode.AddTranstion(sinarioEdge1, sinarioNode2);
         startNode.AddTranstion(sinarioEdge2, sinarioNode3);
