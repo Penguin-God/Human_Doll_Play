@@ -6,7 +6,7 @@ using UnityEngine;
 public class DoTest : MonoBehaviour
 {
     [SerializeField] CharacterMover characterMover;
-    [SerializeField] UI_Dialogue dialogue;
+    
     [SerializeField] ShootingDiractor secnarioDirector;
     [SerializeField] ActDatas[] actDatas;
     EnvirmentController _envirmentController;
@@ -14,6 +14,8 @@ public class DoTest : MonoBehaviour
     [SerializeField] SpritePresenter curtain;
     [SerializeField] ActivePersenter activePersenter1;
     [SerializeField] ActivePersenter activePersenter2;
+
+    [SerializeField] UI_NudgeController uI_NudgeController;
     void Start()
     {
         characterMover.DependencyInject(new GridMoveUseCase(GameSettings.TileSize));
@@ -21,7 +23,7 @@ public class DoTest : MonoBehaviour
         var envirment2 = new NudgeEnvierment("B", activePersenter1);
         var envirment3 = new NudgeEnvierment("C", activePersenter2);
         _envirmentController = new EnvirmentController(new NudgeEnvierment[] { envirment1, envirment2, envirment3 });
-
+        uI_NudgeController.StartNudgeSetting(_envirmentController);
     }
 
     void Update()
@@ -41,27 +43,6 @@ public class DoTest : MonoBehaviour
     }
 
     IEnumerable<IAct>[] CreateSinarioDatas() => actDatas.Select(x => x.CreateSinarioData()).ToArray();
-    //{
-    //    List<IEnumerable<IAct>> result = new();
-    //    foreach (ActDatas data in actDatas)
-    //        result.Add(CreateActs(data));
-    //    return result.ToArray();
-    //}
-
-    //IEnumerable<IAct> CreateActs(ActDatas actDatas) => actDatas.actDatas.Select(x => CreateAct(x));
-
-    //IAct CreateAct(ActData actData)
-    //{
-    //    switch (actData.selectedAction)
-    //    {
-    //        case ActionEnum.Move: return new ObjectMoveActor(characterMover, actData.MoveEntities);
-    //        case ActionEnum.Rotate: return new CharacterRotator(characterMover, actData.rotateDir);
-    //        case ActionEnum.Dialogue: return new Dialoguer(actData.dialogue, dialogue, dialogue);
-    //        case ActionEnum.Sound: return new SoundActor(actData._clip);
-    //        case ActionEnum.Envirment: return actData._envirmentInteractionData.CreateInteractionActor();
-    //        default: return null;
-    //    }
-    //}
 
     public static SinarioEdge CreateEdge(params NudgeParameter[] parameters) => new SinarioEdge(parameters);
 

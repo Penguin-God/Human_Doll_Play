@@ -38,9 +38,4 @@ public class CharacterMover : ObjectMover
     }
 
     public void RotateToDir(Direction direction) => PlayIdleAnima(direction);
-
-    void Update()
-    {
-        print(_gridMoveUseCase);
-    }
 }
