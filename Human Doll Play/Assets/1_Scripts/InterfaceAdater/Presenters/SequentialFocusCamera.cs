@@ -31,4 +31,6 @@ public class SequentialFocusCamera : MonoBehaviour
     }
 
     void ChangePositoin(Vector2 destination) => transform.position = new Vector3(destination.x, destination.y, transform.position.z);
+
+    public void ResetPosition() => ChangePositoin(transform.parent.position);
 }

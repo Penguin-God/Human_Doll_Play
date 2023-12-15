@@ -5478,6 +5478,7 @@ MonoBehaviour:
   activePersenter1: {fileID: 466609462}
   activePersenter2: {fileID: 1285775994}
   uI_NudgeController: {fileID: 1760251464}
+  sequentialFocusCamera: {fileID: 519420034}
 --- !u!4 &1445997979
 Transform:
   m_ObjectHideFlags: 0

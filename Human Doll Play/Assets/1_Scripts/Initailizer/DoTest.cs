@@ -16,6 +16,7 @@ public class DoTest : MonoBehaviour
     [SerializeField] ActivePersenter activePersenter2;
 
     [SerializeField] UI_NudgeController uI_NudgeController;
+    [SerializeField] SequentialFocusCamera sequentialFocusCamera;
     void Start()
     {
         characterMover.DependencyInject(new GridMoveUseCase(GameSettings.TileSize));
@@ -24,6 +25,19 @@ public class DoTest : MonoBehaviour
         var envirment3 = new NudgeEnvierment("C", activePersenter2);
         _envirmentController = new EnvirmentController(new NudgeEnvierment[] { envirment1, envirment2, envirment3 });
         uI_NudgeController.StartNudgeSetting(_envirmentController);
+        secnarioDirector.OnShootingDone += ReSettting;
+    }
+
+    void ReSettting(bool isSuccess)
+    {
+        if (isSuccess) return;
+
+        _envirmentController.ChangeEnvirment("A", 0);
+        _envirmentController.ChangeEnvirment("B", 0);
+        _envirmentController.ChangeEnvirment("C", 0);
+        uI_NudgeController.gameObject.SetActive(true);
+        sequentialFocusCamera.MoveToTarget(0);
+        // 캐릭터 위치 복구
     }
 
     void Update()
@@ -37,6 +51,8 @@ public class DoTest : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            sequentialFocusCamera.ResetPosition();
+            uI_NudgeController.gameObject.SetActive(false);
             secnarioDirector.SetGrahp(CreateFiveSinarioGraph(CreateSinarioDatas()));
             secnarioDirector.Shooting(_envirmentController.NudgeParameters);
         }
