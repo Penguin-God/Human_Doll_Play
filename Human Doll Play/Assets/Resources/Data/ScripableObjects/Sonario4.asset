@@ -24,27 +24,75 @@ MonoBehaviour:
   _actDatas:
   - _selectedAction: 2
     _moveData:
-      _mover: {fileID: 0}
       _speed: 5
       _moveDatas: []
     _characterRotateData:
-      _character: {fileID: 0}
       _direction: 0
     _dialogueData:
       dialogue:
       - "\uC74C. \uC5EC\uAE30\uB294 \uCEE4\uD2BC\uC774 \uC798 \uB2EB\uD600 \uC788\uAD70"
-      - "\uB2E4 \uBA39\uC73C\uB2C8\uAE4C \uB2E4\uC2DC \uC878\uB9AC\uB124"
-      - "\uC790\uC57C\uACA0\uB2E4"
-      _dialoger: {fileID: 0}
-      _waiter: {fileID: 0}
+      - "\uBA39\uC744 \uC218 \uC788\uACA0\uC5B4"
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _interactionObject: {fileID: 0}
+      _objectName: 
+      value: 0
+    _delay: 0
+  - _selectedAction: 4
+    _moveData:
+      _speed: 5
+      _moveDatas: []
+    _characterRotateData:
+      _direction: 0
+    _dialogueData:
+      dialogue: []
+    _clip: {fileID: 0}
+    _envirmentInteractionData:
+      _objectName: "\uBC84\uC12F"
+      value: 0
+    _delay: 0
+  - _selectedAction: 3
+    _moveData:
+      _speed: 5
+      _moveDatas: []
+    _characterRotateData:
+      _direction: 0
+    _dialogueData:
+      dialogue: []
+    _clip: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
+    _envirmentInteractionData:
+      _objectName: 
+      value: 0
+    _delay: 0
+  - _selectedAction: 5
+    _moveData:
+      _speed: 5
+      _moveDatas: []
+    _characterRotateData:
+      _direction: 0
+    _dialogueData:
+      dialogue: []
+    _clip: {fileID: 0}
+    _envirmentInteractionData:
+      _objectName: 
+      value: 0
+    _delay: 1
+  - _selectedAction: 2
+    _moveData:
+      _speed: 5
+      _moveDatas: []
+    _characterRotateData:
+      _direction: 0
+    _dialogueData:
+      dialogue:
+      - "\uB2E4 \uBA39\uC73C\uB2C8\uAE4C \uB2E4\uC2DC \uC878\uB9AC\uB124"
+      - "\uC790\uC57C\uACA0\uB2E4"
+    _clip: {fileID: 0}
+    _envirmentInteractionData:
+      _objectName: 
       value: 0
     _delay: 0
   - _selectedAction: 0
     _moveData:
-      _mover: {fileID: 0}
       _speed: 5
       _moveDatas:
       - moveDir: 1
@@ -56,31 +104,24 @@ MonoBehaviour:
       - moveDir: 2
         moveCount: 1
     _characterRotateData:
-      _character: {fileID: 0}
       _direction: 0
     _dialogueData:
       dialogue: []
-      _dialoger: {fileID: 0}
-      _waiter: {fileID: 0}
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _interactionObject: {fileID: 0}
+      _objectName: 
       value: 0
     _delay: 0
   - _selectedAction: 1
     _moveData:
-      _mover: {fileID: 0}
       _speed: 5
       _moveDatas: []
     _characterRotateData:
-      _character: {fileID: 0}
       _direction: 1
     _dialogueData:
       dialogue: []
-      _dialoger: {fileID: 0}
-      _waiter: {fileID: 0}
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _interactionObject: {fileID: 0}
+      _objectName: 
       value: 0
     _delay: 0

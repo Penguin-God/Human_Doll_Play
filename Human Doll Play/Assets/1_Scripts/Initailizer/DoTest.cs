@@ -12,18 +12,23 @@ public class DoTest : MonoBehaviour
     EnvirmentController _envirmentController;
 
     [SerializeField] SpritePresenter curtain;
-    [SerializeField] ActivePersenter activePersenter1;
-    [SerializeField] ActivePersenter activePersenter2;
+    [SerializeField] SpritePresenter curtain2;
 
     [SerializeField] UI_NudgeController uI_NudgeController;
     [SerializeField] SequentialFocusCamera sequentialFocusCamera;
+
+    [SerializeField] ConditionalActiveObject _lightToBad;
+    [SerializeField] ConditionalActiveObject _lightToMesroom;
+    [SerializeField] GameObject mushroom;
     void Start()
     {
         characterMover.DependencyInject(new GridMoveUseCase(GameSettings.TileSize));
-        var envirment1 = new NudgeEnvierment("A", curtain);
-        var envirment2 = new NudgeEnvierment("B", activePersenter1);
-        var envirment3 = new NudgeEnvierment("C", activePersenter2);
-        _envirmentController = new EnvirmentController(new NudgeEnvierment[] { envirment1, envirment2, envirment3 });
+        var envirment1 = new NudgeEnvierment("A", null);
+        var envirment2 = new NudgeEnvierment("B", curtain);
+        var envirment3 = new NudgeEnvierment("C", curtain2);
+        _envirmentController = new EnvirmentController(new NudgeEnvierment[] { envirment1, envirment2, envirment3 }, new ConditionalActiveObject[] { _lightToBad, _lightToMesroom });
+        _lightToBad.SetEn(_envirmentController);
+        _lightToMesroom.SetEn(_envirmentController);
         uI_NudgeController.StartNudgeSetting(_envirmentController);
         secnarioDirector.OnShootingDone += ReSettting;
     }
@@ -37,6 +42,7 @@ public class DoTest : MonoBehaviour
         _envirmentController.ChangeEnvirment("C", 0);
         uI_NudgeController.gameObject.SetActive(true);
         sequentialFocusCamera.MoveToTarget(0);
+        mushroom.gameObject.SetActive(true);
         // 캐릭터 위치 복구
     }
 

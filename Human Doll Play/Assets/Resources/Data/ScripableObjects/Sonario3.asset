@@ -78,6 +78,19 @@ MonoBehaviour:
       _objectName: LightToBad
       value: 0
     _delay: 0
+  - _selectedAction: 4
+    _moveData:
+      _speed: 5
+      _moveDatas: []
+    _characterRotateData:
+      _direction: 0
+    _dialogueData:
+      dialogue: []
+    _clip: {fileID: 0}
+    _envirmentInteractionData:
+      _objectName: curtain
+      value: 0
+    _delay: 0
   - _selectedAction: 5
     _moveData:
       _speed: 5

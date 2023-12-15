@@ -22,39 +22,18 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _actDatas:
-  - _selectedAction: 3
-    _moveData:
-      _mover: {fileID: 0}
-      _speed: 5
-      _moveDatas: []
-    _characterRotateData:
-      _character: {fileID: 0}
-      _direction: 0
-    _dialogueData:
-      dialogue: []
-      _dialoger: {fileID: 0}
-      _waiter: {fileID: 0}
-    _clip: {fileID: 8300000, guid: 84e427d6b66ab4066b6a4dcd0ce819ee, type: 3}
-    _envirmentInteractionData:
-      _interactionObject: {fileID: 0}
-      value: 0
-    _delay: 0
   - _selectedAction: 2
     _moveData:
-      _mover: {fileID: 0}
       _speed: 5
       _moveDatas: []
     _characterRotateData:
-      _character: {fileID: 0}
       _direction: 0
     _dialogueData:
       dialogue:
       - "\uBE44\uC624\uB098\uBCF4\uB124..."
       - "\uC878\uB824... \uADF8\uB0E5 \uC790\uC57C\uC9C0..."
-      _dialoger: {fileID: 0}
-      _waiter: {fileID: 0}
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _interactionObject: {fileID: 0}
+      _objectName: 
       value: 0
     _delay: 0
