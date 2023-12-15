@@ -18,11 +18,11 @@ public enum ActionEnum
 [Serializable]
 public class MoveData
 {
-    [SerializeField] GameObject _mover;
+    // [SerializeField] GameObject _mover;
     [SerializeField] float _speed = 5;
     [SerializeField] MoveEntityData[] _moveDatas;
 
-    public IAct CreateMoveActor() => new ObjectMoveActor(_mover.GetComponent<ObjectMover>(), _moveDatas.Select(x => new MoveEntity(x.moveDir, _speed, x.moveCount)));
+    public IAct CreateMoveActor() => new ObjectMoveActor(GameObject.FindObjectOfType<ObjectMover>(), _moveDatas.Select(x => new MoveEntity(x.moveDir, _speed, x.moveCount)));
 }
 
 [Serializable]
@@ -36,29 +36,29 @@ public class MoveEntityData
 [Serializable]
 public class CharacterRotateData
 {
-    [SerializeField] GameObject _character;
+    // [SerializeField] GameObject _character;
     [SerializeField, EnumToggleButtons] Direction _direction;
 
-    public IAct CreateRotateActor() => new CharacterRotator(_character.GetComponent<CharacterMover>(), _direction);
+    public IAct CreateRotateActor() => new CharacterRotator(GameObject.FindObjectOfType<CharacterMover>(), _direction);
 }
 
 [Serializable]
 public class DialogeData
 {
     [SerializeField, TextArea] string[] dialogue;
-    [SerializeField] GameObject _dialoger;
-    [SerializeField] GameObject _waiter; 
+    //[SerializeField] GameObject _dialoger;
+    //[SerializeField] GameObject _waiter; 
 
-    public IAct CreateDialoger() => new Dialoguer(dialogue, _dialoger.GetComponent<IDialoguer>(), _waiter.GetComponent<IYieldNextLine>());
+    public IAct CreateDialoger() => new Dialoguer(dialogue, GameObject.Find("Canvas").GetComponent<IDialoguer>(), GameObject.Find("Canvas").GetComponent<IYieldNextLine>());
 }
 
 [Serializable]
 public class EnvirmentInteractionData
 {
-    [SerializeField] GameObject _interactionObject;
+    [SerializeField] string _objectName;
     [SerializeField] int value;
 
-    public IAct CreateInteractionActor() => new EnvirmentInteractionActor(_interactionObject.GetComponent<ISceneEnvirment>(), value);
+    public IAct CreateInteractionActor() => new EnvirmentInteractionActor(GameObject.Find(_objectName).GetComponent<ISceneEnvirment>(), value);
 }
 
 [Serializable]

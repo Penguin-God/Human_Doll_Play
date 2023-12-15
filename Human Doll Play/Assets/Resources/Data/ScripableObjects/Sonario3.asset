@@ -24,116 +24,91 @@ MonoBehaviour:
   _actDatas:
   - _selectedAction: 2
     _moveData:
-      _mover: {fileID: 0}
       _speed: 5
       _moveDatas: []
     _characterRotateData:
-      _character: {fileID: 0}
       _direction: 0
     _dialogueData:
       dialogue:
       - "\uC544... \uBE5B"
       - "\uB9DD\uD560 \uCEE4\uD2BC\uC774 \uC65C \uC5F4\uB824\uC788\uB294\uAC70\uC57C."
-      _dialoger: {fileID: 0}
-      _waiter: {fileID: 0}
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _interactionObject: {fileID: 0}
+      _objectName: 
       value: 0
     _delay: 0
   - _selectedAction: 0
     _moveData:
-      _mover: {fileID: 0}
       _speed: 5
       _moveDatas:
       - moveDir: 3
         moveCount: 1
     _characterRotateData:
-      _character: {fileID: 0}
       _direction: 0
     _dialogueData:
       dialogue: []
-      _dialoger: {fileID: 0}
-      _waiter: {fileID: 0}
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _interactionObject: {fileID: 0}
+      _objectName: 
       value: 0
     _delay: 0
   - _selectedAction: 3
     _moveData:
-      _mover: {fileID: 0}
       _speed: 5
       _moveDatas: []
     _characterRotateData:
-      _character: {fileID: 0}
       _direction: 0
     _dialogueData:
       dialogue: []
-      _dialoger: {fileID: 0}
-      _waiter: {fileID: 0}
     _clip: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
     _envirmentInteractionData:
-      _interactionObject: {fileID: 0}
+      _objectName: 
       value: 0
     _delay: 0
   - _selectedAction: 4
     _moveData:
-      _mover: {fileID: 0}
       _speed: 5
       _moveDatas: []
     _characterRotateData:
-      _character: {fileID: 0}
       _direction: 0
     _dialogueData:
       dialogue: []
-      _dialoger: {fileID: 0}
-      _waiter: {fileID: 0}
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _interactionObject: {fileID: 0}
+      _objectName: LightToBad
       value: 0
     _delay: 0
   - _selectedAction: 5
     _moveData:
-      _mover: {fileID: 0}
       _speed: 5
       _moveDatas: []
     _characterRotateData:
-      _character: {fileID: 0}
       _direction: 0
     _dialogueData:
       dialogue: []
-      _dialoger: {fileID: 0}
-      _waiter: {fileID: 0}
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _interactionObject: {fileID: 0}
+      _objectName: 
       value: 0
     _delay: 1
   - _selectedAction: 2
     _moveData:
-      _mover: {fileID: 0}
       _speed: 5
       _moveDatas: []
     _characterRotateData:
-      _character: {fileID: 0}
       _direction: 0
     _dialogueData:
       dialogue:
       - "\uC544.. \uAD1C\uD788 \uC77C\uC5B4\uB098\uC11C \uBC30\uACE0\uD504\uB124..."
       - "\uBD84\uBA85 \uC2DD\uD0C1\uC5D0 \uC5B4\uC81C \uBA39\uB2E4 \uB0A8\uC740 \uBC84\uC12F\uC774
         \uC788\uC5C8\uB294\uB370"
-      _dialoger: {fileID: 0}
-      _waiter: {fileID: 0}
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _interactionObject: {fileID: 0}
+      _objectName: 
       value: 0
     _delay: 0
   - _selectedAction: 0
     _moveData:
-      _mover: {fileID: 0}
       _speed: 5
       _moveDatas:
       - moveDir: 1
@@ -143,14 +118,11 @@ MonoBehaviour:
       - moveDir: 0
         moveCount: 2
     _characterRotateData:
-      _character: {fileID: 0}
       _direction: 0
     _dialogueData:
       dialogue: []
-      _dialoger: {fileID: 0}
-      _waiter: {fileID: 0}
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _interactionObject: {fileID: 0}
+      _objectName: 
       value: 0
     _delay: 0
