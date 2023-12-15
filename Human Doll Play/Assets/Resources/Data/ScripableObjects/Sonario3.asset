@@ -40,6 +40,7 @@ MonoBehaviour:
     _envirmentInteractionData:
       _interactionObject: {fileID: 0}
       value: 0
+    _delay: 0
   - _selectedAction: 0
     _moveData:
       _mover: {fileID: 0}
@@ -58,6 +59,7 @@ MonoBehaviour:
     _envirmentInteractionData:
       _interactionObject: {fileID: 0}
       value: 0
+    _delay: 0
   - _selectedAction: 3
     _moveData:
       _mover: {fileID: 0}
@@ -74,6 +76,7 @@ MonoBehaviour:
     _envirmentInteractionData:
       _interactionObject: {fileID: 0}
       value: 0
+    _delay: 0
   - _selectedAction: 4
     _moveData:
       _mover: {fileID: 0}
@@ -90,6 +93,24 @@ MonoBehaviour:
     _envirmentInteractionData:
       _interactionObject: {fileID: 0}
       value: 0
+    _delay: 0
+  - _selectedAction: 5
+    _moveData:
+      _mover: {fileID: 0}
+      _speed: 5
+      _moveDatas: []
+    _characterRotateData:
+      _character: {fileID: 0}
+      _direction: 0
+    _dialogueData:
+      dialogue: []
+      _dialoger: {fileID: 0}
+      _waiter: {fileID: 0}
+    _clip: {fileID: 0}
+    _envirmentInteractionData:
+      _interactionObject: {fileID: 0}
+      value: 0
+    _delay: 1
   - _selectedAction: 2
     _moveData:
       _mover: {fileID: 0}
@@ -109,6 +130,7 @@ MonoBehaviour:
     _envirmentInteractionData:
       _interactionObject: {fileID: 0}
       value: 0
+    _delay: 0
   - _selectedAction: 0
     _moveData:
       _mover: {fileID: 0}
@@ -131,3 +153,4 @@ MonoBehaviour:
     _envirmentInteractionData:
       _interactionObject: {fileID: 0}
       value: 0
+    _delay: 0

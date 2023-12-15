@@ -12,7 +12,6 @@ public class ObjectMover : MonoBehaviour
 
     public virtual IEnumerator Co_Move(MoveEntity moveEntity)
     {
-        print(_gridMoveUseCase);
         Vector2 destination = _gridMoveUseCase.CalculateDestination(moveEntity, transform.position);
         while (Vector2.Distance(transform.position, destination) > Mathf.Epsilon)
         {

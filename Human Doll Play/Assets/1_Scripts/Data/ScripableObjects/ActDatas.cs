@@ -12,6 +12,7 @@ public enum ActionEnum
     Dialogue,
     Sound,
     Envirment,
+    Delay,
 }
 
 [Serializable]
@@ -81,6 +82,9 @@ public class ActData
     [SerializeField, ShowIf(nameof(_selectedAction), ActionEnum.Envirment)]
     EnvirmentInteractionData _envirmentInteractionData;
 
+    [SerializeField, ShowIf(nameof(_selectedAction), ActionEnum.Delay)]
+    float _delay;
+
     public IAct CreateAct()
     {
         switch (_selectedAction)
@@ -90,6 +94,7 @@ public class ActData
             case ActionEnum.Dialogue: return _dialogueData.CreateDialoger();
             case ActionEnum.Sound: return new SoundActor(_clip);
             case ActionEnum.Envirment: return _envirmentInteractionData.CreateInteractionActor();
+            case ActionEnum.Delay: return new DelayActor(_delay);
             default: return null;
         }
     }

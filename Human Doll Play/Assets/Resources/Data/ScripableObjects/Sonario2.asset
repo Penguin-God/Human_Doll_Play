@@ -40,3 +40,4 @@ MonoBehaviour:
     _envirmentInteractionData:
       _interactionObject: {fileID: 0}
       value: 0
+    _delay: 0

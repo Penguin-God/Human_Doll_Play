@@ -38,6 +38,7 @@ MonoBehaviour:
     _envirmentInteractionData:
       _interactionObject: {fileID: 0}
       value: 0
+    _delay: 0
   - _selectedAction: 2
     _moveData:
       _mover: {fileID: 0}
@@ -56,3 +57,4 @@ MonoBehaviour:
     _envirmentInteractionData:
       _interactionObject: {fileID: 0}
       value: 0
+    _delay: 0
