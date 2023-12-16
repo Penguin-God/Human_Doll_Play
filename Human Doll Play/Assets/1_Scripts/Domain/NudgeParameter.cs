@@ -10,6 +10,11 @@ public struct NudgeParameter
         Name = name;
         Value = 0;
     }
+    public NudgeParameter(string name, int value)
+    {
+        Name = name;
+        Value = value;
+    }
 
     public void ChangeValue(int value) => Value = value;
 }

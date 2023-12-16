@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 public class EnvirmentStateEntity
 {
-    
+    readonly public ParametersCondition Condition;
+    readonly public int State;
 
-    public int GetState()
+    public EnvirmentStateEntity(ParametersCondition condition, int state)
     {
-        return 0;
+        Condition = condition;
+        State = state;
     }
 }
