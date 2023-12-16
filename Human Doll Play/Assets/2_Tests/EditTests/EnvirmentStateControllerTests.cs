@@ -15,17 +15,11 @@ public class EnvirmentStateControllerTests
     public void 환경은_조건에_맞는_상태를_적용해야_함(int a, int b, bool expected)
     {
         var entitys = CreateEntity(1, 1, 1);
-        var envirment = new TestEnvirment();
+        var envirment = EnvirmentTestHelper.CreateTestEnvirment();
         var sut = new EnvirmentStateController(new EnvirmentStateEntity[] { entitys }, envirment);
 
         sut.UpdateState(ParameterCreator.Create2Parms(a, b));
 
         Assert.AreEqual(expected, envirment.Flag);
-    }
-
-    class TestEnvirment : IEnvirment
-    {
-        public bool Flag;
-        public void ChangeEnvierment(int value) => Flag = value == 1;
     }
 }

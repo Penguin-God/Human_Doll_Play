@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnvirmentTestHelper : MonoBehaviour
+public static class EnvirmentTestHelper
 {
-    // Start is called before the first frame update
-    void Start()
+    public static TestEnvirment CreateTestEnvirment() => new TestEnvirment();
+    public class TestEnvirment : IEnvirment
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public bool Flag;
+        public void ChangeEnvierment(int value) => Flag = value == 1;
     }
 }
