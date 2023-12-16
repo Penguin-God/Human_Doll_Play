@@ -66,7 +66,7 @@ public class DoTest : MonoBehaviour
 
     IEnumerable<IAct>[] CreateSinarioDatas() => actDatas.Select(x => x.CreateSinarioData()).ToArray();
 
-    public static SinarioEdge CreateEdge(params NudgeParameter[] parameters) => new SinarioEdge(parameters);
+    public static ParameterConditionChecker CreateEdge(params NudgeParameter[] parameters) => new ParameterConditionChecker(parameters);
 
     NudgeParameter CreateParameter(string name, int value)
     {
