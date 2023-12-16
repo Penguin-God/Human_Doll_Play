@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class SinarioTestHelper
 {
-    public static ParameterConditionChecker CreateEdge(params NudgeParameter[] parameters) => new ParameterConditionChecker(parameters);
+    public static ParametersCondition CreateEdge(params NudgeParameter[] parameters) => new ParametersCondition(parameters);
 
     public static IEnumerable<NudgeParameter> CreateParms(int a = -1, int b = -1, int c = -1)
     {

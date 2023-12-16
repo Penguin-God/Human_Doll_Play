@@ -4,8 +4,8 @@ using System.Linq;
 
 public class SinarioNode
 {
-    Dictionary<ParameterConditionChecker, SinarioNode> _edgeByTarget = new();
-    public void AddTranstion(ParameterConditionChecker edge, SinarioNode target) => _edgeByTarget.Add(edge, target);
+    Dictionary<ParametersCondition, SinarioNode> _edgeByTarget = new();
+    public void AddTranstion(ParametersCondition edge, SinarioNode target) => _edgeByTarget.Add(edge, target);
 
     public bool IsSuccess { get; private set; } = false;
     public bool IsLast => _edgeByTarget == null || _edgeByTarget.Count() == 0;

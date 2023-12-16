@@ -4,10 +4,10 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class ParameterConditionCheckerTests
+public class ParametersConditionTests
 {
     IEnumerable<NudgeParameter> CreateParms(int a, int b) => SinarioTestHelper.CreateParms(a, b);
-    ParameterConditionChecker CreateSut(IEnumerable<NudgeParameter> parms) => new(parms);
+    ParametersCondition CreateSut(IEnumerable<NudgeParameter> parms) => new(parms);
 
     [Test]
     [TestCase(0, false)]
