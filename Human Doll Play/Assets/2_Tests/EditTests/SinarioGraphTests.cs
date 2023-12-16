@@ -21,14 +21,14 @@ public class SinarioGraphTests
 
         //Act & Assert
         AssertMoveSinario(sut, true, false, sinario2, a: 0);
-        sut.ResetSianrio();
+        sut = SinarioTestHelper.CreateFiveSinarioGraph(sinario2, sinario3, sinario4, sinario5, sinario6);
 
         AssertMoveSinario(sut, true, false, sinario3, a: 1, b: 0);
-        sut.ResetSianrio();
+        sut = SinarioTestHelper.CreateFiveSinarioGraph(sinario2, sinario3, sinario4, sinario5, sinario6);
 
         AssertMoveSinario(sut, false, false, sinario4, a: 1, b: 1);
         AssertMoveSinario(sut, true, false, sinario5, c: 0);
-        sut.ResetSianrio();
+        sut = SinarioTestHelper.CreateFiveSinarioGraph(sinario2, sinario3, sinario4, sinario5, sinario6);
 
         AssertMoveSinario(sut, false, false, sinario4, a: 1, b: 1);
         AssertMoveSinario(sut, true, true, sinario6, c: 1);

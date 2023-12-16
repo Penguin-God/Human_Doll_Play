@@ -18,13 +18,8 @@ public readonly struct SinarioData
 public class SinarioGraph
 {
     Dictionary<SinarioNode, IEnumerable<IAct>> _nodeBySinario = new();
-    SinarioNode _startNode;
     SinarioNode _currentNode = null;
-    public SinarioGraph(SinarioNode startSinario)
-    {
-        _startNode = startSinario;
-        _currentNode = startSinario;
-    }
+    public SinarioGraph(SinarioNode startSinario) => _currentNode = startSinario;
     public void AddSianrio(SinarioNode node, IEnumerable<IAct> sinario) => _nodeBySinario.Add(node, sinario);
 
     public SinarioData MoveNextSinario(IEnumerable<NudgeParameter> nudgeParmeters)
@@ -32,6 +27,4 @@ public class SinarioGraph
         _currentNode = _currentNode.GetNextScenario(nudgeParmeters);
         return new SinarioData(_nodeBySinario[_currentNode], _currentNode.IsLast, _currentNode.IsSuccess);
     }
-
-    public void ResetSianrio() => _currentNode = _startNode;
 }
