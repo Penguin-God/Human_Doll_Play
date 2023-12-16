@@ -13,6 +13,7 @@ public enum ActionEnum
     Sound,
     Envirment,
     Delay,
+    Object,
 }
 
 [Serializable]
@@ -53,12 +54,21 @@ public class DialogeData
 }
 
 [Serializable]
-public class EnvirmentInteractionData
+public class EnvirmentData
+{
+    [SerializeField] string parameterName;
+    [SerializeField] int value;
+
+    public IAct CreateInteractionActor(EnvirmentManager envirmentManager) => new EnvirmentChangeActor(envirmentManager, new NudgeParameter(parameterName, value));
+}
+
+[Serializable]
+public class ObjectControllData
 {
     [SerializeField] string _objectName;
     [SerializeField] int value;
 
-    public IAct CreateInteractionActor() => new EnvirmentChangeActor(GameObject.Find(_objectName).GetComponent<IEnvirment>(), value);
+    public IAct CreateObjectActor() => new ObjectControllActor(GameObject.Find(_objectName).GetComponent<IEnvirment>(), value);
 }
 
 [Serializable]
@@ -80,12 +90,15 @@ public class ActData
     AudioClip _clip;
 
     [SerializeField, ShowIf(nameof(_selectedAction), ActionEnum.Envirment)]
-    EnvirmentInteractionData _envirmentInteractionData;
+    EnvirmentData _envirmentInteractionData;
 
     [SerializeField, ShowIf(nameof(_selectedAction), ActionEnum.Delay)]
     float _delay;
 
-    public IAct CreateAct()
+    [SerializeField, ShowIf(nameof(_selectedAction), ActionEnum.Object)]
+    ObjectControllData _objectControllData;
+
+    public IAct CreateAct(EnvirmentManager envirmentManager)
     {
         switch (_selectedAction)
         {
@@ -93,8 +106,9 @@ public class ActData
             case ActionEnum.Rotate: return _characterRotateData.CreateRotateActor();
             case ActionEnum.Dialogue: return _dialogueData.CreateDialoger();
             case ActionEnum.Sound: return new SoundActor(_clip);
-            case ActionEnum.Envirment: return _envirmentInteractionData.CreateInteractionActor();
+            case ActionEnum.Envirment: return _envirmentInteractionData.CreateInteractionActor(envirmentManager);
             case ActionEnum.Delay: return new DelayActor(_delay);
+            case ActionEnum.Object: return _objectControllData.CreateObjectActor();
             default: return null;
         }
     }
@@ -105,5 +119,5 @@ public class ActDatas : SerializedScriptableObject
 {
     [SerializeField] ActData[] _actDatas;
 
-    public IEnumerable<IAct> CreateSinarioData() => _actDatas.Select(x => x.CreateAct());
+    public IEnumerable<IAct> CreateSinarioData(EnvirmentManager envirmentManager) => _actDatas.Select(x => x.CreateAct(envirmentManager));
 }

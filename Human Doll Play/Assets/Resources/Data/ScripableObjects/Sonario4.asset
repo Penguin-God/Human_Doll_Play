@@ -34,10 +34,13 @@ MonoBehaviour:
       - "\uBA39\uC744 \uC218 \uC788\uACA0\uC5B4"
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _objectName: 
+      parameterName: 
       value: 0
     _delay: 0
-  - _selectedAction: 4
+    _objectControllData:
+      _objectName: 
+      value: 0
+  - _selectedAction: 6
     _moveData:
       _speed: 5
       _moveDatas: []
@@ -47,9 +50,12 @@ MonoBehaviour:
       dialogue: []
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _objectName: "\uBC84\uC12F"
+      parameterName: 
       value: 0
     _delay: 0
+    _objectControllData:
+      _objectName: "\uBC84\uC12F"
+      value: 0
   - _selectedAction: 3
     _moveData:
       _speed: 5
@@ -60,9 +66,12 @@ MonoBehaviour:
       dialogue: []
     _clip: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
     _envirmentInteractionData:
-      _objectName: 
+      parameterName: 
       value: 0
     _delay: 0
+    _objectControllData:
+      _objectName: 
+      value: 0
   - _selectedAction: 5
     _moveData:
       _speed: 5
@@ -73,9 +82,12 @@ MonoBehaviour:
       dialogue: []
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _objectName: 
+      parameterName: 
       value: 0
     _delay: 1
+    _objectControllData:
+      _objectName: 
+      value: 0
   - _selectedAction: 2
     _moveData:
       _speed: 5
@@ -88,9 +100,12 @@ MonoBehaviour:
       - "\uC790\uC57C\uACA0\uB2E4"
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _objectName: 
+      parameterName: 
       value: 0
     _delay: 0
+    _objectControllData:
+      _objectName: 
+      value: 0
   - _selectedAction: 0
     _moveData:
       _speed: 5
@@ -109,9 +124,12 @@ MonoBehaviour:
       dialogue: []
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _objectName: 
+      parameterName: 
       value: 0
     _delay: 0
+    _objectControllData:
+      _objectName: 
+      value: 0
   - _selectedAction: 1
     _moveData:
       _speed: 5
@@ -122,6 +140,9 @@ MonoBehaviour:
       dialogue: []
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _objectName: 
+      parameterName: 
       value: 0
     _delay: 0
+    _objectControllData:
+      _objectName: 
+      value: 0

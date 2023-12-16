@@ -1,17 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class NudgeEnvierment
-{
-    public readonly NudgeParameter NudgeParameter;
-
-    public NudgeEnvierment(string parameterName, IEnvirment sceneEnvirment)
-    {
-        NudgeParameter = new NudgeParameter(parameterName);
-        SceneEnvirment = sceneEnvirment;
-    }
-}
-
 public class NudgeParameterController
 {
     readonly public ParametersCondition Condition;

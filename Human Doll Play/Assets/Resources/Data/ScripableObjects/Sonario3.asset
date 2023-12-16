@@ -34,9 +34,12 @@ MonoBehaviour:
       - "\uB9DD\uD560 \uCEE4\uD2BC\uC774 \uC65C \uC5F4\uB824\uC788\uB294\uAC70\uC57C."
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _objectName: 
+      parameterName: 
       value: 0
     _delay: 0
+    _objectControllData:
+      _objectName: 
+      value: 0
   - _selectedAction: 0
     _moveData:
       _speed: 5
@@ -49,9 +52,12 @@ MonoBehaviour:
       dialogue: []
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _objectName: 
+      parameterName: 
       value: 0
     _delay: 0
+    _objectControllData:
+      _objectName: 
+      value: 0
   - _selectedAction: 3
     _moveData:
       _speed: 5
@@ -62,9 +68,12 @@ MonoBehaviour:
       dialogue: []
     _clip: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
     _envirmentInteractionData:
+      parameterName: 
+      value: 0
+    _delay: 0
+    _objectControllData:
       _objectName: 
       value: 0
-    _delay: 0
   - _selectedAction: 4
     _moveData:
       _speed: 5
@@ -75,22 +84,12 @@ MonoBehaviour:
       dialogue: []
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _objectName: LightToBad
+      parameterName: B
       value: 0
     _delay: 0
-  - _selectedAction: 4
-    _moveData:
-      _speed: 5
-      _moveDatas: []
-    _characterRotateData:
-      _direction: 0
-    _dialogueData:
-      dialogue: []
-    _clip: {fileID: 0}
-    _envirmentInteractionData:
-      _objectName: curtain
+    _objectControllData:
+      _objectName: 
       value: 0
-    _delay: 0
   - _selectedAction: 5
     _moveData:
       _speed: 5
@@ -101,9 +100,12 @@ MonoBehaviour:
       dialogue: []
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _objectName: 
+      parameterName: 
       value: 0
     _delay: 1
+    _objectControllData:
+      _objectName: 
+      value: 0
   - _selectedAction: 2
     _moveData:
       _speed: 5
@@ -117,9 +119,12 @@ MonoBehaviour:
         \uC788\uC5C8\uB294\uB370"
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _objectName: 
+      parameterName: 
       value: 0
     _delay: 0
+    _objectControllData:
+      _objectName: 
+      value: 0
   - _selectedAction: 0
     _moveData:
       _speed: 5
@@ -136,6 +141,9 @@ MonoBehaviour:
       dialogue: []
     _clip: {fileID: 0}
     _envirmentInteractionData:
-      _objectName: 
+      parameterName: 
       value: 0
     _delay: 0
+    _objectControllData:
+      _objectName: 
+      value: 0

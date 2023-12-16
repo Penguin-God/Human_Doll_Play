@@ -2095,7 +2095,6 @@ GameObject:
   m_Component:
   - component: {fileID: 466609461}
   - component: {fileID: 466609460}
-  - component: {fileID: 466609462}
   - component: {fileID: 466609463}
   m_Layer: 0
   m_Name: LightToBad
@@ -2170,19 +2169,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -361.98}
---- !u!114 &466609462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466609459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49e30b4e8882bf24cbecd8afe51317ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parameterName: B
 --- !u!114 &466609463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4983,10 +4969,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1285775992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49e30b4e8882bf24cbecd8afe51317ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f68b49c82035fc4c8c226594f3f8e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameterName: C
 --- !u!1 &1296191736
 GameObject:
   m_ObjectHideFlags: 0
@@ -6013,10 +5998,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c70404e6233a0dd4fba10f2a17f242bb, type: 2}
   curtain: {fileID: 1639905226}
   curtain2: {fileID: 2117891477}
+  _lightToBad: {fileID: 466609463}
+  _lightToMesroom: {fileID: 1285775996}
   uI_NudgeController: {fileID: 1760251464}
   sequentialFocusCamera: {fileID: 519420034}
-  _lightToBad: {fileID: 466609462}
-  _lightToMesroom: {fileID: 1285775996}
   mushroom: {fileID: 1051896793}
 --- !u!4 &1445997979
 Transform:

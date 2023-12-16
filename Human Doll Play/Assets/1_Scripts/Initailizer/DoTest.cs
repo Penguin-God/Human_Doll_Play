@@ -13,22 +13,31 @@ public class DoTest : MonoBehaviour
 
     [SerializeField] SpritePresenter curtain;
     [SerializeField] SpritePresenter curtain2;
+    [SerializeField] ActivePersenter _lightToBad;
+    [SerializeField] ActivePersenter _lightToMesroom;
 
     [SerializeField] UI_NudgeController uI_NudgeController;
     [SerializeField] SequentialFocusCamera sequentialFocusCamera;
 
-    [SerializeField] ConditionalActiveObject _lightToBad;
-    [SerializeField] ConditionalActiveObject _lightToMesroom;
+    public EnvirmentManager _enviremntManager;
+    //[SerializeField] ConditionalActiveObject _lightToBad;
+    //[SerializeField] ConditionalActiveObject _lightToMesroom;
     [SerializeField] GameObject mushroom;
+
+    IEnumerable<EnvirmentStateEntity> CreateEntitys(int a = -1, int b = -1, int c = -1) => new EnvirmentStateEntity[] { new EnvirmentStateEntity(CreateCondition(a, b, c), 1) };
     void Start()
     {
         characterMover.DependencyInject(new GridMoveCalculator(GameSettings.TileSize));
-        var envirment1 = new NudgeEnvierment("A", null);
-        var envirment2 = new NudgeEnvierment("B", curtain);
-        var envirment3 = new NudgeEnvierment("C", curtain2);
-        // _envirmentController = new NudgeParameterController(new NudgeEnvierment[] { envirment1, envirment2, envirment3 }, new ConditionalActiveObject[] { _lightToBad, _lightToMesroom });
-        _lightToBad.SetEn(_envirmentController);
-        _lightToMesroom.SetEn(_envirmentController);
+
+        IEnumerable<NudgeParameter> nudgeParameters = CreateCondition(0, 0, 0).Conditions;
+        var envirment1 = new EnvirmentStateController(CreateEntitys(b:1), curtain);
+        var envirment2 = new EnvirmentStateController(CreateEntitys(c:1), curtain2);
+        var envirment3 = new EnvirmentStateController(CreateEntitys(a:1, b:1), _lightToBad);
+        var envirment4 = new EnvirmentStateController(CreateEntitys(a:1, c:1), _lightToMesroom);
+        _enviremntManager = new EnvirmentManager(new EnvirmentStateController[] { envirment1, envirment2, envirment3, envirment4 }, nudgeParameters);
+        _envirmentController = new NudgeParameterController(nudgeParameters, _enviremntManager);
+        //_lightToBad.SetEn(_envirmentController);
+        //_lightToMesroom.SetEn(_envirmentController);
         uI_NudgeController.StartNudgeSetting(_envirmentController);
         secnarioDirector.OnShootingDone += ReSettting;
     }
@@ -64,16 +73,24 @@ public class DoTest : MonoBehaviour
         }
     }
 
-    IEnumerable<IAct>[] CreateSinarioDatas() => actDatas.Select(x => x.CreateSinarioData()).ToArray();
+    IEnumerable<IAct>[] CreateSinarioDatas() => actDatas.Select(x => x.CreateSinarioData(_enviremntManager)).ToArray();
 
     public static ParametersCondition CreateEdge(params NudgeParameter[] parameters) => new ParametersCondition(parameters);
 
-    NudgeParameter CreateParameter(string name, int value)
+    public static ParametersCondition CreateCondition(int a = -1, int b = -1, int c = -1) => new ParametersCondition(CreateParms(a, b, c));
+    readonly static string[] Names = new string[] { "A", "B", "C" };
+    static IEnumerable<NudgeParameter> CreateParms(params int[] values)
     {
-        NudgeParameter result = new(name);
-        result.ChangeValue(value);
+        var result = new List<NudgeParameter>();
+        for (int i = 0; i < values.Length; i++)
+        {
+            if (values[i] >= 0)
+                result.Add(new NudgeParameter(Names[i], values[i]));
+        }
         return result;
     }
+
+    NudgeParameter CreateParameter(string name, int value) => new NudgeParameter(name, value);
 
     public SinarioNode[] CreateSixNodeTree()
     {

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 
 public class ObjectMoveActor : IAct
@@ -40,14 +42,30 @@ public class CharacterRotator : IAct
 
 public class EnvirmentChangeActor : IAct
 {
+    readonly EnvirmentManager _envirmentManager;
+    readonly NudgeParameter NudgeParameter;
+    public EnvirmentChangeActor(EnvirmentManager envirmentManager, NudgeParameter nudgeParameter)
+    {
+        _envirmentManager = envirmentManager;
+        NudgeParameter = nudgeParameter;
+    }
+
+    public IEnumerator Execute()
+    {
+        _envirmentManager.ChangeEnviremt(NudgeParameter);
+        yield return null;
+    }
+}
+
+public class ObjectControllActor : IAct
+{
     readonly IEnvirment _envirment;
     readonly int Value;
-    public EnvirmentChangeActor(IEnvirment envirment, int value)
+    public ObjectControllActor(IEnvirment envirment, int value)
     {
         _envirment = envirment;
         Value = value;
     }
-
     public IEnumerator Execute()
     {
         _envirment.ChangeEnvierment(Value);
