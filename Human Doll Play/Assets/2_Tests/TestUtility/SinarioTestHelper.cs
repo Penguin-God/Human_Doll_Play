@@ -4,23 +4,7 @@ using UnityEngine;
 
 public static class SinarioTestHelper
 {
-    public static ParametersCondition CreateEdge(params NudgeParameter[] parameters) => new ParametersCondition(parameters);
-
-    public static IEnumerable<NudgeParameter> CreateParms(int a = -1, int b = -1, int c = -1)
-    {
-        List<NudgeParameter> result = new ();
-        if (a >= 0) result.Add(CreateParameter("A", a));
-        if (b >= 0) result.Add(CreateParameter("B", b));
-        if (c >= 0) result.Add(CreateParameter("C", c));
-        return result;
-    }
-
-    static NudgeParameter CreateParameter(string name, int value)
-    {
-        NudgeParameter result = new(name);
-        result.ChangeValue(value);
-        return result;
-    }
+    public static IEnumerable<NudgeParameter> CreateParms(int a = -1, int b = -1, int c = -1) => ParameterCreator.Create3Parms(a, b, c);
 
     public static SinarioNode[] CreateSixNodeTree()
     {
@@ -31,18 +15,18 @@ public static class SinarioTestHelper
         SinarioNode sinarioNode5 = new ();
         SinarioNode sinarioNode6 = SinarioNode.CreateSuccessNode();
 
-        var sinarioEdge1 = CreateEdge(CreateParameter("A", 0));
-        var sinarioEdge2 = CreateEdge(CreateParameter("A", 1), CreateParameter("B", 0));
-        var sinarioEdge3 = CreateEdge(CreateParameter("A", 1), CreateParameter("B", 1));
-        var sinarioEdge4 = CreateEdge(CreateParameter("C", 0));
-        var sinarioEdge5 = CreateEdge(CreateParameter("C", 1));
+        var condition1 = ParameterCreator.CreateCondition(a: 0);
+        var condition2 = ParameterCreator.CreateCondition(a: 1, b:0);
+        var condition3 =  ParameterCreator.CreateCondition(a: 1, b: 1);
+        var condition4 =  ParameterCreator.CreateCondition(c: 0);
+        var condition5 =  ParameterCreator.CreateCondition(c: 1);
 
-        startNode.AddTranstion(sinarioEdge1, sinarioNode2);
-        startNode.AddTranstion(sinarioEdge2, sinarioNode3);
-        startNode.AddTranstion(sinarioEdge3, sinarioNode4);
+        startNode.AddTranstion(condition1, sinarioNode2);
+        startNode.AddTranstion(condition2, sinarioNode3);
+        startNode.AddTranstion(condition3, sinarioNode4);
 
-        sinarioNode4.AddTranstion(sinarioEdge4, sinarioNode5);
-        sinarioNode4.AddTranstion(sinarioEdge5, sinarioNode6);
+        sinarioNode4.AddTranstion(condition4, sinarioNode5);
+        sinarioNode4.AddTranstion(condition5, sinarioNode6);
         return new SinarioNode[] { startNode, sinarioNode2, sinarioNode3, sinarioNode4, sinarioNode5, sinarioNode6 };
     }
 

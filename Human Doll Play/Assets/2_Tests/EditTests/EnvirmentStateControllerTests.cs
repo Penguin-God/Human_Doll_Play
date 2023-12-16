@@ -6,8 +6,7 @@ using UnityEngine.TestTools;
 
 public class EnvirmentStateControllerTests
 {
-    EnvirmentStateEntity CreateEntity(int a, int b, int state) => new EnvirmentStateEntity(new ParametersCondition(Create2Parms(a, b)), state);
-    IEnumerable<NudgeParameter> Create2Parms(int a, int b) => new NudgeParameter[] { new NudgeParameter("A", a), new NudgeParameter("B", b) };
+    EnvirmentStateEntity CreateEntity(int a, int b, int state) => new EnvirmentStateEntity(ParameterCreator.CreateCondition(a, b), state);
     [Test]
     [TestCase(0, 0, false)]
     [TestCase(0, 1, false)]
@@ -19,7 +18,7 @@ public class EnvirmentStateControllerTests
         var envirment = new TestEnvirment();
         var sut = new EnvirmentStateController(new EnvirmentStateEntity[] { entitys }, envirment);
 
-        sut.UpdateState(Create2Parms(a, b));
+        sut.UpdateState(ParameterCreator.Create2Parms(a, b));
 
         Assert.AreEqual(expected, envirment.Flag);
     }
