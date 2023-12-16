@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpritePresenter : MonoBehaviour, ISceneEnvirment
+public class SpritePresenter : MonoBehaviour, IEnvirment
 {
     [SerializeField] Sprite[] _sprites;
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivePersenter : MonoBehaviour, ISceneEnvirment
+public class ActivePersenter : MonoBehaviour, IEnvirment
 {
     public void ChangeEnvierment(int value)
     {

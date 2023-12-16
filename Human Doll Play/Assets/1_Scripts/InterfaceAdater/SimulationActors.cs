@@ -40,9 +40,9 @@ public class CharacterRotator : IAct
 
 public class EnvirmentChangeActor : IAct
 {
-    readonly ISceneEnvirment _envirment;
+    readonly IEnvirment _envirment;
     readonly int Value;
-    public EnvirmentChangeActor(ISceneEnvirment envirment, int value)
+    public EnvirmentChangeActor(IEnvirment envirment, int value)
     {
         _envirment = envirment;
         Value = value;

@@ -5,9 +5,9 @@ using System.Linq;
 public class NudgeEnvierment
 {
     public readonly NudgeParameter NudgeParameter;
-    readonly ISceneEnvirment SceneEnvirment;
+    readonly IEnvirment SceneEnvirment;
     
-    public NudgeEnvierment(string parameterName, ISceneEnvirment sceneEnvirment)
+    public NudgeEnvierment(string parameterName, IEnvirment sceneEnvirment)
     {
         NudgeParameter = new NudgeParameter(parameterName);
         SceneEnvirment = sceneEnvirment;

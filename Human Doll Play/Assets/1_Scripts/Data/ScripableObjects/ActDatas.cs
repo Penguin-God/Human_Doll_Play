@@ -58,7 +58,7 @@ public class EnvirmentInteractionData
     [SerializeField] string _objectName;
     [SerializeField] int value;
 
-    public IAct CreateInteractionActor() => new EnvirmentChangeActor(GameObject.Find(_objectName).GetComponent<ISceneEnvirment>(), value);
+    public IAct CreateInteractionActor() => new EnvirmentChangeActor(GameObject.Find(_objectName).GetComponent<IEnvirment>(), value);
 }
 
 [Serializable]
