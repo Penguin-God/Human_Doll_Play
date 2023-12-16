@@ -8,7 +8,8 @@
         "UseCase",
         "Utility",
         "TestUtility",
-        "UseCaseInterface"
+        "UseCaseInterface",
+        "InterfaceAdater"
     ],
     "includePlatforms": [
         "Editor"

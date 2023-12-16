@@ -9,7 +9,7 @@ public class DoTest : MonoBehaviour
     
     [SerializeField] ShootingDiractor secnarioDirector;
     [SerializeField] ActDatas[] actDatas;
-    NudgeEnvirmentController _envirmentController;
+    NudgeParameterController _envirmentController;
 
     [SerializeField] SpritePresenter curtain;
     [SerializeField] SpritePresenter curtain2;
@@ -26,7 +26,7 @@ public class DoTest : MonoBehaviour
         var envirment1 = new NudgeEnvierment("A", null);
         var envirment2 = new NudgeEnvierment("B", curtain);
         var envirment3 = new NudgeEnvierment("C", curtain2);
-        _envirmentController = new NudgeEnvirmentController(new NudgeEnvierment[] { envirment1, envirment2, envirment3 }, new ConditionalActiveObject[] { _lightToBad, _lightToMesroom });
+        // _envirmentController = new NudgeParameterController(new NudgeEnvierment[] { envirment1, envirment2, envirment3 }, new ConditionalActiveObject[] { _lightToBad, _lightToMesroom });
         _lightToBad.SetEn(_envirmentController);
         _lightToMesroom.SetEn(_envirmentController);
         uI_NudgeController.StartNudgeSetting(_envirmentController);
@@ -37,9 +37,9 @@ public class DoTest : MonoBehaviour
     {
         if (isSuccess) return;
 
-        _envirmentController.ChangeEnvirment("A", 0);
-        _envirmentController.ChangeEnvirment("B", 0);
-        _envirmentController.ChangeEnvirment("C", 0);
+        _envirmentController.ChangeParameter("A", 0);
+        _envirmentController.ChangeParameter("B", 0);
+        _envirmentController.ChangeParameter("C", 0);
         uI_NudgeController.gameObject.SetActive(true);
         sequentialFocusCamera.MoveToTarget(0);
         mushroom.gameObject.SetActive(true);
@@ -48,19 +48,19 @@ public class DoTest : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) _envirmentController.ChangeEnvirment("A", 0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) _envirmentController.ChangeEnvirment("A", 1);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) _envirmentController.ChangeEnvirment("B", 0);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) _envirmentController.ChangeEnvirment("B", 1);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) _envirmentController.ChangeEnvirment("C", 0);
-        if (Input.GetKeyDown(KeyCode.Alpha6)) _envirmentController.ChangeEnvirment("C", 1);
+        //if (Input.GetKeyDown(KeyCode.Alpha1)) _envirmentController.ChangeEnvirment("A", 0);
+        //if (Input.GetKeyDown(KeyCode.Alpha2)) _envirmentController.ChangeEnvirment("A", 1);
+        //if (Input.GetKeyDown(KeyCode.Alpha3)) _envirmentController.ChangeEnvirment("B", 0);
+        //if (Input.GetKeyDown(KeyCode.Alpha4)) _envirmentController.ChangeEnvirment("B", 1);
+        //if (Input.GetKeyDown(KeyCode.Alpha5)) _envirmentController.ChangeEnvirment("C", 0);
+        //if (Input.GetKeyDown(KeyCode.Alpha6)) _envirmentController.ChangeEnvirment("C", 1);
 
         if (Input.GetKeyDown(KeyCode.R))
         {
             sequentialFocusCamera.ResetPosition();
             uI_NudgeController.gameObject.SetActive(false);
             secnarioDirector.SetGrahp(CreateFiveSinarioGraph(CreateSinarioDatas()));
-            secnarioDirector.Shooting(_envirmentController.NudgeParameters);
+            secnarioDirector.Shooting(_envirmentController.Condition.Conditions);
         }
     }
 

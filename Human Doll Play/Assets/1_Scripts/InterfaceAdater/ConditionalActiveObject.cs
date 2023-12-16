@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ConditionalActiveObject : MonoBehaviour
 {
-    [SerializeField] NudgeEnvirmentController _envirmentController;
+    [SerializeField] NudgeParameterController _envirmentController;
 
-    public void SetEn(NudgeEnvirmentController envirmentController) => _envirmentController = envirmentController;
+    public void SetEn(NudgeParameterController envirmentController) => _envirmentController = envirmentController;
 
     [SerializeField] string parameterName;
 
     public void Set()
     {
-        print(_envirmentController.GetEnvirmentValue("A"));
-        print(_envirmentController.GetEnvirmentValue(parameterName));
-        gameObject.SetActive(_envirmentController.GetEnvirmentValue("A") == 1 && _envirmentController.GetEnvirmentValue(parameterName) == 1);
+        print(_envirmentController.GetParameterValue("A"));
+        print(_envirmentController.GetParameterValue(parameterName));
+        gameObject.SetActive(_envirmentController.GetParameterValue("A") == 1 && _envirmentController.GetParameterValue(parameterName) == 1);
     }
 }
