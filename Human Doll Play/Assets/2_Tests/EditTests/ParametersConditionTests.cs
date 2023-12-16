@@ -34,4 +34,18 @@ public class ParametersConditionTests
 
         Assert.AreEqual(expected, result);
     }
+
+    [Test]
+    public void 조건이_바뀜에_따라_결과도_바뀌어야_함()
+    {
+        var sut = CreateSut(CreateParms(0, 0));
+
+        var result = sut.CheckCondition(CreateParms(1, 0));
+        Assert.IsFalse(result);
+
+        sut.ChangeCondition(new NudgeParameter("A", 1));
+
+        result = sut.CheckCondition(CreateParms(1, 0));
+        Assert.IsTrue(result);
+    }
 }
