@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectMover : MonoBehaviour
 {
     protected GridMoveUseCase _gridMoveUseCase;
-    public void DependencyInject(GridMoveUseCase gridMoveUseCase) //=> _gridMoveUseCase = gridMoveUseCase;
+    public void DependencyInject(GridMoveUseCase gridMoveUseCase)
     {
         _gridMoveUseCase = gridMoveUseCase;
     }
