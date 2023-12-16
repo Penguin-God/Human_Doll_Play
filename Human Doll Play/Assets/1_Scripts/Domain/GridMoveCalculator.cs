@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridMoveUseCase
+public class GridMoveCalculator
 {
     readonly int TileSize;
-    public GridMoveUseCase(int tileSize) => TileSize = tileSize;
+    public GridMoveCalculator(int tileSize) => TileSize = tileSize;
     public Vector2 CalculateDestination(Vector2 currentPos, Direction direction) => currentPos + (DirToVector(direction) * TileSize);
     public Vector2 DirToVector(Direction direction)
     {

@@ -9,7 +9,7 @@ public class DoTest : MonoBehaviour
     
     [SerializeField] ShootingDiractor secnarioDirector;
     [SerializeField] ActDatas[] actDatas;
-    EnvirmentController _envirmentController;
+    NudgeEnvirmentController _envirmentController;
 
     [SerializeField] SpritePresenter curtain;
     [SerializeField] SpritePresenter curtain2;
@@ -22,11 +22,11 @@ public class DoTest : MonoBehaviour
     [SerializeField] GameObject mushroom;
     void Start()
     {
-        characterMover.DependencyInject(new GridMoveUseCase(GameSettings.TileSize));
+        characterMover.DependencyInject(new GridMoveCalculator(GameSettings.TileSize));
         var envirment1 = new NudgeEnvierment("A", null);
         var envirment2 = new NudgeEnvierment("B", curtain);
         var envirment3 = new NudgeEnvierment("C", curtain2);
-        _envirmentController = new EnvirmentController(new NudgeEnvierment[] { envirment1, envirment2, envirment3 }, new ConditionalActiveObject[] { _lightToBad, _lightToMesroom });
+        _envirmentController = new NudgeEnvirmentController(new NudgeEnvierment[] { envirment1, envirment2, envirment3 }, new ConditionalActiveObject[] { _lightToBad, _lightToMesroom });
         _lightToBad.SetEn(_envirmentController);
         _lightToMesroom.SetEn(_envirmentController);
         uI_NudgeController.StartNudgeSetting(_envirmentController);

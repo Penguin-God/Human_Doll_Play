@@ -15,7 +15,7 @@ public class GridMoveUseCaseTests
     [TestCase(Direction.Left, -10, 0)]
     public void 유닛은_주어진_방향대로_움직여야_함(Direction dir, float x, float y)
     {
-        var sut = new GridMoveUseCase(TileSize);
+        var sut = new GridMoveCalculator(TileSize);
 
         var result = sut.CalculateDestination(StartPos, dir);
 
@@ -29,7 +29,7 @@ public class GridMoveUseCaseTests
     [TestCase(Direction.Left, 7, -70, 0)]
     public void 유닛은_주어진_방향대로_카운트만큼_움직여야_함(Direction dir, int count, float x, float y)
     {
-        var sut = new GridMoveUseCase(TileSize);
+        var sut = new GridMoveCalculator(TileSize);
 
         var result = sut.CalculateDestination(new MoveEntity(dir, 0, count), StartPos);
 

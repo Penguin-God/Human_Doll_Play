@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UI_NudgeController : MonoBehaviour
 {
-    EnvirmentController _envirmentController;
+    NudgeEnvirmentController _envirmentController;
     [SerializeField] Button _activeButton;
     [SerializeField] Button _inactiveButton;
     [SerializeField] Button _nextButton;
@@ -35,7 +35,7 @@ public class UI_NudgeController : MonoBehaviour
         _envirmentController.ChangeEnvirment(_names[_currentIndex], value);
     }
 
-    public void StartNudgeSetting(EnvirmentController envirmentController)
+    public void StartNudgeSetting(NudgeEnvirmentController envirmentController)
     {
         _envirmentController = envirmentController;
     }

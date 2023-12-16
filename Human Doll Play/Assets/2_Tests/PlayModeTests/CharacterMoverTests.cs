@@ -13,7 +13,7 @@ public class CharacterMoverTests
         animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Character/CharacterController");
 
         var result = gameObj.AddComponent<CharacterMover>();
-        result.DependencyInject(new GridMoveUseCase(1));
+        result.DependencyInject(new GridMoveCalculator(1));
         return result;
     }
 

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ConditionalActiveObject : MonoBehaviour
 {
-    [SerializeField] EnvirmentController _envirmentController;
+    [SerializeField] NudgeEnvirmentController _envirmentController;
 
-    public void SetEn(EnvirmentController envirmentController) => _envirmentController = envirmentController;
+    public void SetEn(NudgeEnvirmentController envirmentController) => _envirmentController = envirmentController;
 
     [SerializeField] string parameterName;
 

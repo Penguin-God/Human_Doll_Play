@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ObjectMover : MonoBehaviour
 {
-    protected GridMoveUseCase _gridMoveUseCase;
-    public void DependencyInject(GridMoveUseCase gridMoveUseCase)
+    protected GridMoveCalculator _gridMoveUseCase;
+    public void DependencyInject(GridMoveCalculator gridMoveUseCase)
     {
         _gridMoveUseCase = gridMoveUseCase;
     }

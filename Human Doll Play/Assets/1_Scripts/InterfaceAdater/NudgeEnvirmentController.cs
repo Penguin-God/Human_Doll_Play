@@ -22,11 +22,11 @@ public class NudgeEnvierment
     public bool SameParameter(string name) => NudgeParameter.Name == name;
 }
 
-public class EnvirmentController
+public class NudgeEnvirmentController
 {
     HashSet<NudgeEnvierment> _nudgeEnvierments;
     public IEnumerable<NudgeParameter> NudgeParameters => _nudgeEnvierments.Select(x => x.NudgeParameter);
-    public EnvirmentController(IEnumerable<NudgeEnvierment> nudgeEnvierments, IEnumerable<ConditionalActiveObject> conditionalActiveObjects)
+    public NudgeEnvirmentController(IEnumerable<NudgeEnvierment> nudgeEnvierments, IEnumerable<ConditionalActiveObject> conditionalActiveObjects)
     {
         _nudgeEnvierments = new(nudgeEnvierments);
         _conditionalActiveObjects = conditionalActiveObjects;
