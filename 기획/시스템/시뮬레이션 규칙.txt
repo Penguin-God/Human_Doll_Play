@@ -1,0 +1,17 @@
+캐릭터 움직임
+when:
+where:
+who:
+what:
+why:
+how:
+
+
+캐릭터 대화
+when:
+where:
+who:
+what:
+why:
+how:
+
